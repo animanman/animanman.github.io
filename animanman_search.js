@@ -38,4 +38,44 @@ $(function() {
     alert(`『${decodeURIComponent(query)}』${selectedCategory.includes('category') ? ` (${decodeURIComponent(selectedCategoryText)})` : ''} で検索しました`);
 });
 
+    $(function() {
+    // チェックボックスとリンクの対応を定義
+    const linkMapping = {
+        '#s_anm1': 'https://bbs.animanch.com/search/',
+        '#s_anm2': 'https://bbs.animanch.com/search2/',
+        '#s_anm3': 'https://bbs.animanch.com/searchRes/'
+    };
+
+    // リンクを更新する関数
+    function updateLinks() {
+        let query = $('#q').val().trim(); // 入力値を取得し、空白をトリム
+        const futanDiv = $('#futan');
+        futanDiv.empty(); // 既存のリンクをクリア
+
+        if (!query) {
+            futanDiv.append('<p>検索ワードを入力してください。</p>');
+            return;
+        }
+
+        // 一文字の場合は ">" を付け足す
+        if (query.length === 1) {
+            query = `>${query}`;
+        }
+
+        const encodedQuery = encodeURIComponent(query);
+
+        // 各チェックボックスの状態を確認してリンクを生成
+        Object.entries(linkMapping).forEach(([checkbox, baseUrl]) => {
+            if ($(checkbox).is(':checked')) {
+                futanDiv.append(`<p><a href="${baseUrl}${encodedQuery}" target="_blank">${$(checkbox).next('label').text()}</a></p>`);
+            }
+        });
+    }
+
+    // 入力フィールドとチェックボックスの変更を監視
+    $('#q').on('input', updateLinks);
+    $('input[type="checkbox"]').on('change', updateLinks);
+});
+
+
 });
