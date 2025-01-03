@@ -3,47 +3,32 @@ const s_abbs_url = 'site:bbs.animanch.com/board/';
 const enc_s_abbs_url = encodeURIComponent(s_abbs_url);
 
 $(function() {
+    const href = encodeURIComponent(location.href);
+    const title = encodeURIComponent($('title').html());
 
-	let href =location.href;
-	let getTitle = $('title').html();
+    // SNSボタンの動作設定
+    $('div.btn').each(function () {
+        const btnId = $(this).attr('id');
+        if (btnId === 'tws_btn') {
+            $(this).wrap(`<a href="http://twitter.com/share?text=${title}&url=${href}" target="_blank"></a>`);
+        } else if (btnId === 'cps_btn') {
+            $(this).on('click', () => navigator.clipboard.writeText(`${title} ${location.href}`));
+        }
+    }).on('click', function () {
+        $(this).css({ 'background-color': 'var(--amm3)' });
+        $(this).children('i').css({ 'color': 'var(--amm2)' });
+    });
 
-	let snsUrl = encodeURIComponent(href);
-	let snsTitle = encodeURIComponent(getTitle);
+    // Google検索ボタンの動作設定
+    $('main button').on('click', function () {
+        const query = encodeURIComponent($('input#q').val());
+        const selectedCategory = $('select#s_category').val();
+        const selectedCategoryText = encodeURIComponent($('select#s_category option:selected').text());
+        const searchUrl = selectedCategory.includes('category')
+            ? `${google_url}${enc_s_abbs_url}+${query}+"${selectedCategoryText}"`
+            : `${google_url}${enc_s_abbs_url}+${query}`;
 
-	$('div.btn').each(function(){
-		let btn_a = $(this).attr('id');
-		let btn_b = btn_a;
-		switch (btn_b){
-    			case 'tws_btn':
-    			$(this).wrap($('<a>').attr({href:'http://twitter.com/share?text='+ snsTitle + '&url='+ snsUrl,target:'_blank'}));
-    			break;
-
-			case 'cps_btn':
-			$(this).on("click",function(){
-				navigator.clipboard.writeText(getTitle + " " + href);
-			});
-			break;
-  		}
-
-	}).on("click",function(){
-		$(this).css({'background-color':'var(--amm3)'});
-		$(this).children('i').css({'color':'var(--amm2)'});
-	});
-
-	$('main button').on("click",function(){
-		let s_query = $('input#q').val();
-		let enc_s_query = encodeURIComponent(s_query);
-		let category_select = $('select#s_category option:selected').val();
-		let category_select_txt = $('select#s_category option:selected').text();
-		
-		if (category_select.indexOf('category') > -1){
-			let enc_category = encodeURIComponent('"'+ category_select_txt +'"');
-			window.open(google_url + enc_s_abbs_url + "+" + enc_s_query + "+" + enc_category, '_blank');
-			alert("『" + s_query + "』 (カテゴリ『" + category_select_txt + "』) で検索しました");
-		}else{
-			window.open(google_url + enc_s_abbs_url + "+" + enc_s_query, '_blank');
-			alert("『" + s_query + "』で検索しました");
-		}
-	});
-
+        window.open(searchUrl, '_blank');
+        alert(`『${decodeURIComponent(query)}』${selectedCategory.includes('category') ? ` (カテゴリ『${decodeURIComponent(selectedCategoryText)}』)` : ''} で検索しました`);
+    });
 });
