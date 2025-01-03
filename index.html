@@ -46,6 +46,7 @@
           <input type="text" id="q" value="" placeholder="検索したい語句を入れるゲー">
         </div>
         <div class="search_option">
+          <p>オプション</p>
           <div class="search_category">
             <label><strong>カテゴリー</strong></label>
             <select id="s_category" name="categoryselect">
@@ -90,6 +91,17 @@
                 <option value="category20">安価系</option>
               </optgroup>
             </select>
+          </div>
+          <div class="search_day">
+            <p>日付検索　準備中なので機能しません</p>
+            <div class="search_bfday">
+              <label><strong>以前</strong></label>
+              <input type="date" name="bfday" />
+            </div>
+            <div class="search_afday">
+              <label><strong>以降</strong></label>
+              <input type="date" name="afday" />
+            </div>
           </div>
         </div>
         <button onclick="search">検索</button>
