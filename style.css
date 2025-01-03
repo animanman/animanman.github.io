@@ -68,6 +68,9 @@ body {
   display:grid;
   grid-template-columns: 1fr minmax(75%,auto) 1fr;
 }
+
+html, body { height: 100%;}
+
 @media screen and (max-width: 720px){
   body {
     min-height:100vh;
