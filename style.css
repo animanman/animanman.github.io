@@ -207,3 +207,12 @@ main div#futan{
   width:95%;
   background-color:var(--bg3);
 }
+
+body > fooder{
+  position: sticky;
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns: 1fr minmax(75%,auto) 1fr;
+  padding:5px;
+  background-color:var(--bg1);
+}
