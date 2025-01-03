@@ -210,6 +210,7 @@ main div#futan{
 
 body > fooder{
   position: sticky;
+  top: 100vh;
   grid-column:1/-1;
   display:grid;
   grid-template-columns: 1fr minmax(75%,auto) 1fr;
