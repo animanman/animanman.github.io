@@ -248,6 +248,14 @@ border-bottom:solid 1px;
   margin:var(--mg1);
 }
 
+main div.cyau_naiyou .animan_nai_check_box{
+display:flex;
+gap:5px;
+}
+main div.cyau_naiyou .animan_nai_check{
+display:inline-block;
+}
+
 main div.cyau_naiyou input{
   width:15px;
 }
