@@ -109,15 +109,18 @@ body > header{
   background-color:var(--bg1);
 }
 @media screen and (min-width: 721px){
-  body > header{
+  body > header,
+  body > footer{
     height:140px;
   }
 }
 @media screen and (max-width: 720px){
-  body > header{
+  body > header,
+  body > footer{
     max-height:200px;
   }
-  body > header > *{
+  body > header > *,
+  body > footer > *{
     max-height:200px;
   }
 }
@@ -228,8 +231,18 @@ body > footer{
   position: sticky;
   top: 100vh;
   grid-column:1/-1;
+  width: var(--sz1);
+  margin: var(--mg1);
   display:grid;
-  grid-template-columns: 1fr minmax(75%,auto) 1fr;
   padding:5px;
   background-color:var(--bg1);
+}
+
+footer div{
+margin: var(--mg1);
+}
+
+footer div a,
+footer div a:visited{
+color: var(--fc9);
 }
