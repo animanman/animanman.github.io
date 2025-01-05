@@ -38,7 +38,7 @@
         </div>
       </div>
     </header>
-    <main>
+        <main>
       <div class="naiyou">
         <p>検索範囲を<a href="https://bbs.animanch.com/" target="_blank">あにまん掲示板</a>に絞って雑に検索します</p>
         <div class="search_word">
@@ -107,14 +107,25 @@
         <button onclick="search">検索</button>
       </div>
       <div class="cyau_naiyou">
-        <p>あにまん掲示板内のスレッド検索結果(リンクのみ)</p>
-        <input type="checkbox" id="s_anm1" name="genkou_title" value="search_anm_def1">
-        <label for="search_anm_def1">現行スレ</label>
-        <input type="checkbox" id="s_anm2" name=kako_title" value="search_anm_def2">
-        <label for="search_anm_def2">過去スレ</label>
-        <input type="checkbox" id="s_anm3" name="anm_res" value="search_anm_def3">
-        <label for="search_anm_def3">レス(β)</label>
-        <div id="futan"></div>
+      <p>その他 検索補助機能</p>
+        <div class="animan_nai_naiyou">
+          <p>あにまん掲示板内(公式)のスレッド検索結果(リンクのみ)</p>
+          <div class="animan_nai_check_box">
+            <div class="animan_nai_check">
+              <input type="checkbox" id="s_anm1" name="genkou_title" value="search_anm_def1">
+              <label for="search_anm_def1">現行スレ</label>
+            </div>
+            <div class="animan_nai_check">
+              <input type="checkbox" id="s_anm2" name=kako_title" value="search_anm_def2">
+              <label for="search_anm_def2">過去スレ</label>
+            </div>
+            <div class="animan_nai_check">
+              <input type="checkbox" id="s_anm3" name="anm_res" value="search_anm_def3">
+              <label for="search_anm_def3">レス(β)</label>
+            </div>
+          </div>
+          <div id="futan"></div>
+        </div>
       </div>
     </main>
     <footer>
