@@ -69,6 +69,7 @@ body {
   width:100vw;
   display:grid;
   grid-template-columns: 1fr minmax(75%,auto) 1fr;
+  overflow: scroll;
 }
 
 html, body { height: 100%;}
