@@ -224,7 +224,7 @@ main div#futan{
   background-color:var(--bg3);
 }
 
-body > fooder{
+body > footer{
   position: sticky;
   top: 100vh;
   grid-column:1/-1;
