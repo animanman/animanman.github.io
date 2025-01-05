@@ -91,7 +91,9 @@ a:visited{
 
 input, select, textarea{
   width:var(--sz3);
+  height:24px;
 }
+
 @media screen and (max-width: 720px){
   input, select, textarea {
     width:var(--sz2);
@@ -200,6 +202,17 @@ main{
   main{
     padding:5%;
   }
+}
+
+main .naiyou .search_word,
+main .naiyou button{
+  margin:5px 0;
+}
+
+main .naiyou .search_word input#q,
+main .naiyou button{
+  height:28px;
+  padding:5px;
 }
 
 main div.cyau_naiyou input{
