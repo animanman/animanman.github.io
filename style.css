@@ -24,6 +24,7 @@
   --bgl3:#b6effb; /*新規スレ作成注意書き等の色*/
   --bgl4:#f5c2c7; /*書き込み期限の色*/
   --bgl5:#badbcc; /*お知らせの色*/
+  --bgl6:#ced4da; /*書き込みフォームの色*/
   
   /*文字色*/
   --fc1:#444; /*ナビゲーションバーなど*/
@@ -54,6 +55,7 @@
   
   --sz1:100%;
   --sz2:95%;
+  --sz21:98%;
   --sz3:75%;
 }
 
@@ -92,6 +94,9 @@ a:visited{
 input, select, textarea{
   width:var(--sz3);
   height:24px;
+  border: solid 1px;
+  border-color:var(--bgl6);
+  border-radius: 3px;
 }
 
 @media screen and (max-width: 720px){
@@ -216,6 +221,31 @@ main .naiyou .search_word input#q,
 main .naiyou button{
   height:28px;
   padding:5px;
+}
+
+.search_option,
+.cyau_naiyou{
+  border: solid 1px;
+  border-radius: 3px;
+  padding:5px;
+}
+.search_option > p,
+.cyau_naiyou > p{
+border-bottom:solid 1px;
+}
+.search_option,.search_option > p{
+  border-color:var(--bgl4);
+  border-bottom-color:var(--bgl4);
+}
+.cyau_naiyou,.cyau_naiyou > p{
+  border-color:var(--bgl3);
+  border-bottom-color:var(--bgl3);
+}
+
+.search_option .search_category,
+.search_option .search_day > div{
+  width:var(--sz21);
+  margin:var(--mg1);
 }
 
 main div.cyau_naiyou input{
