@@ -107,6 +107,11 @@ input, select, textarea{
 }
 
 /*★詳細設定*/
+
+.svg-container{
+  display:inline-block;
+}
+
 body > header{
   grid-column:1/-1;
   display:grid;
