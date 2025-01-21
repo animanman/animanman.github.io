@@ -109,7 +109,7 @@ input,button,textarea,select{
   border-radius:5px;
 }
 
-:is(input,textarea)::placeholder{
+input::placeholder,textarea::placeholder{
   opacity: 0.5;
 }
 
@@ -155,17 +155,18 @@ footer{
   top: 100vh;
 }
 
-:is(header,footer){
+header,footer{
   color: var(--fc9);
   background-color:var(--bg1);
   display:flex;
   justify-content:safe center;
   padding: 5px;
 }
-:is(header,footer) :is(*,*:hover,*:visited){
+header *,header *:hover,header *:visited,
+footer *,footer *:hover,footer *:visited{
     color: inherit;
 }
-:is(header,footer) :is(h1,h2,h3,h4,h5,h6,div){
+header h1,footer div{
     margin: var(--mgh1);
 }
 
@@ -229,11 +230,13 @@ main{
   
 }
 
-main .naiyou :is(.search_word,button){
+main .naiyou .search_word,
+main .naiyou button{
   margin:5px 0;
 }
 
-main .naiyou :is(#q,#search_button){
+main .naiyou #q,
+main .naiyou #search_button{
   height:28px;
   padding:7px;
 }
@@ -265,7 +268,7 @@ main .naiyou .search_word input#q::placeholder,
     justify-content:space-between;
   }
   
-  .opt :is(input,button,textarea,select){
+  .opt input,.opt button,.opt textarea,.opt select){
     border-color:currentcolor;
   }
 
@@ -295,11 +298,14 @@ main .naiyou .search_word input#q::placeholder,
 
 @media screen and (min-width: 721px){
   
-  body > :is(header,footer){
+  body > header,
+  body > footer{
     height:140px;
   }
   
-  header,header :is(.site_top,.share){
+  header,
+  header .site_top,
+  header .share{
     gap: 5px;
   }
   
@@ -336,12 +342,14 @@ main .naiyou .search_word input#q::placeholder,
 }
 @media screen and (max-width: 720px){
   
-  body > :is(header,footer){
+  body > header,
+  body > footer){
     max-height:140px;
     min-height:100px;
     height: var(--derh);
   }
-  body > :is(header,footer) > *{
+  body > header > *,
+  body > footer > *{
     max-height:140px;
   }
   body > header{
