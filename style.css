@@ -92,14 +92,12 @@ body {
 
 a{
   color:var(--fc2);
-  
-  &:hover{
+}
+a:hover{
   color:var(--fc7);
-  }
-  
-  &:visited{
+}
+a:visited{
   color:var(--fc8);
-  }
 }
 
 input,button,textarea,select{
@@ -117,24 +115,22 @@ input,button,textarea,select{
 
 select option{
   background:transparent;
-  
-  &:hover{
+}
+select option:hover{
     background:transparent;
-  }
 }
 
 .svg-container{
   display:inline-block;
   position: relative;
-  
-  & svg {
+}
+.svg-container svg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   }
-}
 
 header{}
 
@@ -146,14 +142,12 @@ main{
   justify-content:safe center;
   align-items: center;
   flex-direction: column;
-  
-  &  > *{
+}
+main > *{
     width: 100%;
-  }
-  
-  & label::before{
+}
+main label::before{
     font-family: "Font Awesome 5 Free";
-  }
 }
 
 footer{
@@ -167,14 +161,12 @@ footer{
   display:flex;
   justify-content:safe center;
   padding: 5px;
-  
-  & :is(*,*:hover,*:visited){
+}
+:is(header,footer) :is(*,*:hover,*:visited){
     color: inherit;
-  }
-  
-  & :is(h1,h2,h3,h4,h5,h6,div){
+}
+:is(header,footer) :is(h1,h2,h3,h4,h5,h6,div){
     margin: var(--mgh1);
-  }
 }
 
 .chu_i_gaki::before{
@@ -190,11 +182,10 @@ content: "※";
 @media screen and (max-width: 720px){
   body {
     font-size: 60%;
-    
-    &  > *:not(header){
+  }
+  body > *:not(header){
       font-size: 16px;
     }
-  }
   
   header,footer{
     flex-flow: row wrap;
@@ -205,24 +196,20 @@ content: "※";
 /*★詳細設定*/
 h1#logo{
   height: 100%;
-  
-  & a{
-    display: flex;
-    height: 100%;
-  }
-  
-  & svg#logo_img{
-    fill:var(--fc9);
-  }
-  
-  & img#logo_img{
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(292deg) brightness(105%) contrast(104%);
-  }
-  
-  & .title_span{
-    margin: var(--mgh1);
-    flex-grow: 1;
-  }
+}
+h1#logo a{
+  display: flex;
+  height: 100%;
+}
+h1#logo svg#logo_img{
+  fill:var(--fc9);
+}
+h1#logo img#logo_img{
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(292deg) brightness(105%) contrast(104%);
+}
+h1#logo .title_span{
+  margin: var(--mgh1);
+  flex-grow: 1;
 }
 
 header .share{
@@ -271,17 +258,17 @@ main .naiyou .search_word input#q::placeholder,
   border-radius: 3px;
   padding:5px;
   margin:3px 0;
-  
-  &  > .opt_t{
+}
+.opt > .opt_t{
     border-bottom:inherit;
     display:flex;
     justify-content:space-between;
   }
   
-  & :is(input,button,textarea,select){
+  .opt :is(input,button,textarea,select){
     border-color:currentcolor;
   }
-}
+
 .search_option{
   border-color:var(--bgl4);
   color: var(--fc4);
@@ -389,13 +376,12 @@ main .naiyou .search_word input#q::placeholder,
   header .share{
     gap: 0.2rem;
     flex-direction: column;
-    
-    & .btn{
+  }
+  .share .btn{
       width:clamp(calc(var(--derh)/4 + var(--derh10)), 8vw, 50px);
       height:clamp(calc(var(--derh)/4 + var(--derh10)), 8vw, 50px);
       font-size: clamp(20px,calc(1.2rem + 0.6vw),30px);
     }
-  }
   
   main{
     padding:2.5%;
