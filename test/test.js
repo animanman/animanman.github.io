@@ -17,15 +17,15 @@ $(function() {
     });
 
     // 検索ボタンの動作設定
-    $('main button').on('click', function () {
+    $('button#search_button').on('click', function () {
         let query = encodeURIComponent($('input#q').val().trim()); // 検索語句
         const selectedCategory = $('select#s_category').val();
         const selectedCategoryText = encodeURIComponent($('select#s_category option:selected').text());
         let additionalFilters = "";
 
         // 日付指定がある場合
-        const bfDay = $('input[name="bfday"]').val();
-        const afDay = $('input[name="afday"]').val();
+        const bfDay = $('input#ds_bfday').val();
+        const afDay = $('input#ds_afday').val();
         if (bfDay) {
             additionalFilters += ` before:${bfDay}`;
         }
@@ -76,7 +76,7 @@ $(function() {
         // 各チェックボックスの状態を確認してリンクを生成
         Object.entries(linkMapping).forEach(([checkbox, baseUrl]) => {
             if ($(checkbox).is(':checked')) {
-                futanDiv.append(`<p><a href="${baseUrl}${encodedQuery}" target="_blank">${$(checkbox).next('label').text()}</a></p>`);
+                futanDiv.append(`<p class=""><a href="${baseUrl}${encodedQuery}" target="_blank">${$(checkbox).next('label').text()}</a></p>`);
             }
         });
     }
@@ -102,7 +102,7 @@ $(function () {
         if (insertionTarget.length) {
             insertionTarget.prepend(`
                 <div class="animanman_gh_ad">
-                    <a href="https://${allowedDomain}" target="_blank"><p>このサイトが気に入ったら<span>こちら</span>も使ってみてね</p></a>
+                    <a href="https://${allowedDomain}/" target="_blank"><p>このサイトが気に入ったら<span>こちら</span>も使ってみてね</p></a>
                 </div>
             `);
         }
