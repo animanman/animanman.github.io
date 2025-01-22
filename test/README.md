@@ -3,3 +3,7 @@
 
 正規版ページは[こちら](https://animanman.github.io/)\
 正規版のソースは[こちら](https://github.com/animanman/animanman.github.io/)
+
+## 機能実装
+
+### 実装予定
