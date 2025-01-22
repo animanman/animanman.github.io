@@ -87,3 +87,53 @@ $(function() {
 });
 
 });
+
+$(function () {
+    const allowedDomain = 'animanman.github.io';
+
+    // 現在のドメインを確認して挿入
+    if (!location.hostname.includes(allowedDomain)) {
+        const insertionTarget = $('main').length
+            ? $('main')
+            : $('header nav').length
+            ? $('header nav')
+            : $('header');
+        
+        if (insertionTarget.length) {
+            insertionTarget.prepend(`
+                <div class="animanman_gh_ad">
+                    <a href="https://${allowedDomain}" target="_blank"><p>このサイトが気に入ったら<span>こちら</span>も使ってみてね</p></a>
+                </div>
+            `);
+        }
+    }
+
+    // CSSを挿入
+    $('footer').after(`
+        <style>
+        .animanman_gh_ad {
+            background-color:#dcc9fb;
+            border: 1px solid #7d74c7;
+            border-radius: 5px;
+            color: #7d74c7;
+
+            & a{
+                display:inline-block;
+                padding: 15px;
+                width:100%;
+            }
+
+            & p{
+                margin: 0;
+                font-size: 16px;
+            }
+
+            & span{
+                color: #fff;
+                text-decoration: underline;
+            }
+
+        }
+        </style>
+    `);
+});
