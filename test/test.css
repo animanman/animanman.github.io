@@ -151,8 +151,11 @@ main{
     width: 100%;
   }
   
-  & label::before{
+  & label::before,
+  & .opt > .opt_t > p::before,
+  & i::before,& i::after{
     font-family: "Font Awesome 5 Free";
+    font-weight: 900;
   }
 }
 
@@ -257,13 +260,16 @@ main .naiyou .search_word input#q::placeholder,
 }
 
 .opt .search_category label::before{
-  content: "\f07b";
+  content: '\f07b';
 }
 .opt .search_bfday label::before{
-  content: "";
+  content: '\f04a';
 }
 .opt .search_afday label::before{
-  content: "";
+  content: '\f04e';
+}
+.opt .search_engine label::before{
+  content: '\f002';
 }
 
 .opt{
@@ -276,10 +282,27 @@ main .naiyou .search_word input#q::placeholder,
     border-bottom:inherit;
     display:flex;
     justify-content:space-between;
+    
+    & > p{
+      font-weight: 600;
+      
+      &::before{
+        content: '\f107';
+        padding: 3px;
+      }
+    }
   }
   
   & :is(input,button,textarea,select){
     border-color:currentcolor;
+    padding: 1px;
+    background-color: #fff;
+  }
+  
+  &, & > .search_day{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 }
 .search_option{
@@ -304,6 +327,11 @@ main .naiyou .search_word input#q::placeholder,
 .animan_nai_check_box {
   display: flex;
   gap: 5px;
+}
+
+#futan {
+  width: 95%;
+  background-color: var(--bg3);
 }
 
 @media screen and (min-width: 721px){
