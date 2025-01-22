@@ -1,1 +1,166 @@
-予定地
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://animanman.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="あにまん検索【非公式】" />
+    <meta property="og:description" content="素人の作ったクソ雑魚低性能なあにまん掲示板専用の検索ページです。管理人ちゃんとは一切関係ありません。" />
+    <meta property="og:site_name" content="あにまん検索【非公式】" />
+    <meta property="og:image" content="https://animanman.github.io/thumb/a.png" />
+    <meta name="twitter:card" content="summary" />
+    <title>あにまん検索【非公式】</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="./test.css" rel="stylesheet">
+    <script src="./test.js"></script>
+    <link rel="icon" href="favicon.ico">
+  </head>
+  <body>
+    <header>
+      <h1 id="logo">
+        <a href="https://animanman.github.io/" class="site_top">
+          <div class="svg-container"><img id="logo_img" src="commons/rogo.svg#animanman" alt="あにまん検索【非公式】"></div>
+          <span class="title_span">あにまん検索<span class="little">【非公式】</span></span>
+        </a>
+      </h1>
+      <div class="share">
+        <div id="tws_btn" class="btn">
+          <i class="fab fa-twitter"></i>
+        </div>
+        <div id="cps_btn" class="btn">
+          <i class="far fa-copy"></i>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="naiyou">
+        <p>検索範囲を<a href="https://bbs.animanch.com/" target="_blank">あにまん掲示板</a>に絞って雑に検索します</p>
+        <div class="search_word">
+          <label><strong>検索ワード</strong></label>
+          <input type="text" id="q" value="" placeholder="検索したい語句を入れるゲー">
+        </div>
+        <div class="search_option opt">
+          <div class="option_title opt_t"><p>オプション</p><button onclick="reset" id="rsb">🔄️</button></div>
+          <div class="search_category">
+            <label><strong>カテゴリー</strong></label>
+            <select id="s_category" name="categoryselect">
+              <option value="" selected>指定なし</option>
+              <option value="category5">お知らせ</option>
+              <optgroup label="単発スレ">
+                <option value="category4">その他ジャンル(二次元以外)</option>
+                <option value="category11">ジャンプ漫画(集英社系)</option>
+                <option value="category29">サンデー・コロコロ漫画(小学館系)</option>
+                <option value="category28">チャンピオン漫画(秋田書店系)</option>
+                <option value="category18">マガジン漫画(講談社系)</option>
+                <option value="category1">その他漫画</option>
+                <option value="category16">ワンピース</option>
+                <option value="category14">鬼滅の刃</option>
+                <option value="category15">呪術廻戦</option>
+                <option value="category19">ヒロアカ</option>
+                <option value="category26">NARUTO・BORUTO</option>
+                <option value="category31">BLEACH(ブリーチ)</option>
+                <option value="category17">ワールドトリガー</option>
+                <option value="category30">ロボット関連</option>
+                <option value="category27">TOUGH(タフ)</option>
+                <option value="category8">ウマ娘・競馬</option>
+                <option value="category9">型月(Fate・FGO・月姫など)</option>
+                <option value="category10">ポケモン</option>
+                <option value="category13">アイドルマスター</option>
+                <option value="category2">アニメ</option>
+                <option value="category25">カードゲーム(TCG・DCG)</option>
+                <option value="category33">ブルーアーカイブ</option>
+                <option value="category3">ソシャゲ・ブラゲ</option>
+                <option value="category32">家庭用ゲーム　他</option>
+                <option value="category24">VTuber・2.5次元</option>
+                <option value="category22">特撮ヒーロー</option>
+                <option value="category12">小説(ラノベ・web小説など)</option>
+                <option value="category23">創作全般(絵・小説・ゲ制など)</option>
+              </optgroup>
+              <optgroup label="通常スレ">
+                <option value="category6">作品別</option>
+                <option value="category7">その他話題</option>
+              </optgroup>
+              <optgroup label="実況・安価など">
+                <option value="category21">実況</option>
+                <option value="category20">安価系</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="search_day">
+            <p><i class="fas fa-calendar"></i>日付検索</p>
+            <div class="search_bfday">
+              <label><strong>以前(before、until)</strong></label>
+              <input type="date" name="bfday" />
+            </div>
+            <div class="search_afday">
+              <label><strong>以降(after、since)</strong></label>
+              <input type="date" name="afday" />
+            </div>
+          </div>
+
+          <div class="search_engine">
+            <label><strong>検索エンジン</strong></label><span class="chu_i_gaki">準備中なので機能しません</span>
+            <select id="s_engine" name="engineselect">
+              <option value="se_Google" id="seid_Google" selected>Google</option>
+              <option value="se_YahooJ" id="seid_YahooJ">Yahoo！Japan</option>
+              <option value="se_bing" id="seid_bing">Bing</option>
+              <option value="se_DDG" id="seid_DDG">DuckDuckGo</option>
+              <option value="se_Brave" id="seid_Brave">Brave</option>
+            </select>
+          </div>
+
+        </div>
+        <button id="search_button" onclick="search">検索</button>
+      </div>
+      <div class="cyau_naiyou opt">
+      <div class="cyau_naiyou_title opt_t"><p>その他 検索補助機能 (リンクのみ生成)</p></div>
+
+        <div class="animan_nai_naiyou">
+          <p>あにまん掲示板内(公式)のスレッド検索結果</p>
+          <p class="chu_i_gaki">オプションは反映されません</p>
+          <div class="animan_nai_check_box">
+            <div class="animan_nai_check">
+              <input type="checkbox" id="s_anm1" name="genkou_title" value="search_anm_def1">
+              <label for="search_anm_def1">現行スレ</label>
+            </div>
+            <div class="animan_nai_check">
+              <input type="checkbox" id="s_anm2" name=kako_title" value="search_anm_def2">
+              <label for="search_anm_def2">過去スレ</label>
+            </div>
+            <div class="animan_nai_check">
+              <input type="checkbox" id="s_anm3" name="anm_res" value="search_anm_def3">
+              <label for="search_anm_def3">レス(β)</label>
+            </div>
+          </div>
+          <div id="futan"></div>
+
+          <div class="animan_nai_beforecategory_check_box">
+            <div class="animan_nai_check">
+              <input type="checkbox" id="kakolog" name="kakolog_category" value="kakolog_anm_cate">
+              <label for="kakolog_anm_cate">カテゴリー過去ログ<span class="chu_i_gaki">準備中なので機能しません</span></label>
+              <p class="chu_i_gaki">オプションのカテゴリーが指定されている場合のみ、日付検索の以前(before)も反映されます。検索ワードは反映されません</p>
+            </div>
+            <div id="sokosoko_futan"></div>
+          </div>
+          
+        </div>
+
+      </div>
+
+<div class="egosa opt">
+<div class="egosa_title opt_t"><p>他SNSの反応</p></div>
+<p class="chu_i_gaki">検索ワードにスレッドURLが入っているとそっちのURLに置き換わります。</p>
+</div>
+
+    </main>
+    <footer>
+      <div>
+        <p><a href="https://github.com/animanman/animanman.github.io/">github</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
