@@ -13,7 +13,7 @@
     <meta name="twitter:card" content="summary" />
     <title>あにまん検索【非公式】</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="./test.css" rel="stylesheet">
     <script src="./test.js"></script>
     <link rel="icon" href="https://animanman.github.io/favicon.ico">
@@ -41,9 +41,10 @@
         <div class="search_word">
           <label><strong>検索ワード</strong></label>
           <input type="text" id="q" value="" placeholder="検索したい語句を入れるゲー">
+          <span id="q_clear"><i class="fas fa-times"></i></span>
         </div>
         <div class="search_option opt">
-          <div class="option_title opt_t"><p>オプション</p><button onclick="reset" id="rsb">🔄️</button></div>
+          <div class="option_title opt_t"><p>オプション</p><button onclick="reset" id="rsb"><i class="fas fa-redo-alt"></i></button></div>
           <div class="search_category">
             <label><strong>カテゴリー</strong></label>
             <select id="s_category" name="categoryselect">
@@ -94,11 +95,11 @@
             <p><i class="fas fa-calendar"></i>日付検索</p>
             <div class="search_bfday">
               <label><strong>以前(before、until)</strong></label>
-              <input type="date" name="bfday" />
+              <input type="date" name="bfday"id="ds_bfday" />
             </div>
             <div class="search_afday">
               <label><strong>以降(after、since)</strong></label>
-              <input type="date" name="afday" />
+              <input type="date" name="afday"id="ds_afday" />
             </div>
           </div>
 
@@ -114,7 +115,10 @@
           </div>
 
         </div>
+<div class="button_area">
         <button id="search_button" onclick="search">検索</button>
+        <button onclick="history" id="hsb"><i class="fas fa-history"></i></button>
+</div>
       </div>
       <div class="cyau_naiyou opt">
       <div class="cyau_naiyou_title opt_t"><p>その他 検索補助機能 (リンクのみ生成)</p></div>
@@ -122,7 +126,7 @@
         <div class="animan_nai_naiyou">
           <p>あにまん掲示板内(公式)のスレッド検索結果</p>
           <p class="chu_i_gaki">オプションは反映されません</p>
-          <div class="animan_nai_check_box">
+          <div class="animan_nai_check_box anm_nai_search">
             <div class="animan_nai_check">
               <input type="checkbox" id="s_anm1" name="genkou_title" value="search_anm_def1">
               <label for="search_anm_def1">現行スレ</label>
@@ -136,16 +140,16 @@
               <label for="search_anm_def3">レス(β)</label>
             </div>
           </div>
-          <div id="futan"></div>
 
-          <div class="animan_nai_beforecategory_check_box">
+          <div class="animan_nai_check_box beforecategory">
             <div class="animan_nai_check">
               <input type="checkbox" id="kakolog" name="kakolog_category" value="kakolog_anm_cate">
               <label for="kakolog_anm_cate">カテゴリー過去ログ<span class="chu_i_gaki">準備中なので機能しません</span></label>
               <p class="chu_i_gaki">オプションのカテゴリーが指定されている場合のみ、日付検索の以前(before)も反映されます。検索ワードは反映されません</p>
             </div>
-            <div id="sokosoko_futan"></div>
           </div>
+
+          <div id="futan"></div>
           
         </div>
 
