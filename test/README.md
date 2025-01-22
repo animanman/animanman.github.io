@@ -5,5 +5,7 @@
 正規版のソースは[こちら](https://github.com/animanman/animanman.github.io/)
 
 ## 機能実装
+- <ins>**2025/1/22**</ins>\
+  testページ作成
 
 ### 実装予定
