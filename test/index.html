@@ -40,11 +40,12 @@
         <p>検索範囲を<a href="https://bbs.animanch.com/" target="_blank">あにまん掲示板</a>に絞って雑に検索します</p>
         <div class="search_word">
           <label><strong>検索ワード</strong></label>
-          <input type="text" id="q" value="" placeholder="検索したい語句を入れるゲー">
-          <span id="q_clear"><i class="fas fa-times"></i></span>
-        </div>
-        <div class="search_option opt">
-          <div class="option_title opt_t"><p>オプション</p><button onclick="reset" id="rsb"><i class="fas fa-redo-alt"></i></button></div>
+<div class="kensaku_box">
+          <input type="text" id="q" value="" placeholder="検索したい語句を入れるゲー"><span id="q_clear"><i class="fas fa-times"></i></span>
+        </div></div>
+        <details open class="search_option opt">
+          <summary class="option_title opt_t"><p>オプション</p><button onclick="reset" id="rsb"><i class="fas fa-redo-alt"></i></button></summary>
+          <div class="opt_contents opt_c">
           <div class="search_category">
             <label><strong>カテゴリー</strong></label>
             <select id="s_category" name="categoryselect">
@@ -114,16 +115,16 @@
             </select>
           </div>
 
-        </div>
+        </div></details>
 <div class="button_area">
         <button id="search_button" onclick="search">検索</button>
         <button onclick="history" id="hsb"><i class="fas fa-history"></i></button>
 </div>
       </div>
-      <div class="cyau_naiyou opt">
-      <div class="cyau_naiyou_title opt_t"><p>その他 検索補助機能 (リンクのみ生成)</p></div>
+      <details open class="cyau_naiyou opt">
+      <summary class="cyau_naiyou_title opt_t"><p>その他 検索補助機能 (リンクのみ生成)</p></summary>
 
-        <div class="animan_nai_naiyou">
+        <div class="animan_nai_naiyou opt_c">
           <p>あにまん掲示板内(公式)のスレッド検索結果</p>
           <p class="chu_i_gaki">オプションは反映されません</p>
           <div class="animan_nai_check_box anm_nai_search">
@@ -153,7 +154,7 @@
           
         </div>
 
-      </div>
+      </details>
 
 <div class="egosa opt">
 <div class="egosa_title opt_t"><p>他SNSの反応</p></div>
