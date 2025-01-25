@@ -90,6 +90,10 @@ body {
   flex-direction: column;
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
 a{
   color:var(--fc2);
   
@@ -115,12 +119,9 @@ input,button,textarea,select{
   opacity: 0.5;
 }
 
-select option{
-  background:transparent;
-  
-  &:hover{
-    background:transparent;
-  }
+summary {
+  cursor: pointer;
+  list-style-type:none;
 }
 
 .svg-container{
@@ -152,7 +153,7 @@ main{
   }
   
   & label::before,
-  & .opt > .opt_t > p::before,
+  & .opt > .opt_t > :is(p,details,summary)::before,
   & i::before,& i::after{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -200,7 +201,6 @@ content: "※";
   }
   
   header,footer{
-    flex-flow: row wrap;
   }
   
 }
@@ -241,12 +241,17 @@ header .share{
   align-items: center;
 }
 
+#cps_btn{
+  cursor: pointer;
+}
+
 main{
   
 }
 
-main .naiyou :is(.search_word,button){
+main .naiyou :is(.search_word,.button_area){
   margin:5px 0;
+  display: flex;
 }
 
 main .naiyou :is(#q,#search_button){
@@ -257,6 +262,29 @@ main .naiyou :is(#q,#search_button){
 main .naiyou .search_word input#q::placeholder,
 .opt label{
   font-size: 14px;
+}
+
+.search_word .kensaku_box{
+  border: 1px solid var(--bgl6);
+  border-radius: 5px;
+  
+  &:is(:hover,:active,:focus,:focus-visible){
+    outline:2px solid var(--fc2);
+  }
+  
+  & #q{
+    border:none;
+    width: calc(100% - 20px);
+    
+    &:focus-visible{
+      outline:none;
+    }
+  }
+  
+  & #q_clear{
+    display: inline-block;
+    width: 20px;
+  }
 }
 
 .opt .search_category label::before{
@@ -279,17 +307,12 @@ main .naiyou .search_word input#q::placeholder,
   margin:3px 0;
   
   &  > .opt_t{
-    border-bottom:inherit;
+    border-bottom: 1px solid;
     display:flex;
     justify-content:space-between;
     
     & > p{
       font-weight: 600;
-      
-      &::before{
-        content: '\f107';
-        padding: 3px;
-      }
     }
   }
   
@@ -299,30 +322,49 @@ main .naiyou .search_word input#q::placeholder,
     background-color: #fff;
   }
   
-  &, & > .search_day{
+  &,& .opt_c,& .search_day{
     display: flex;
     flex-direction: column;
     gap: 2px;
   }
 }
-.search_option{
+.search_option,.search_option > .opt_t{
   border-color:var(--bgl4);
   color: var(--fc4);
 }
-.cyau_naiyou{
+.cyau_naiyou,.cyau_naiyou > .opt_t{
   border-color:var(--bgl3);
   color: var(--fc3);
 }
-.egosa{
+.egosa,.egosa > .opt_t{
   border-color:var(--bgl5);
   color: var(--fc5);
 }
+
+details{
+  & summary > p::before{
+    content: '\f105';
+    padding: 3px;
+  }
+  
+  &[open] summary > p::before{
+    content: '\f107';
+  }
+}
+
+.opt_c select:focus{
+  outline:2px solid var(--fc2);
+}
+
 
 .search_day > div{
   width: 98%;
   margin: var(--mgw1);
 }
 
+.button_area{
+  justify-content: space-between;
+}
 
 .animan_nai_check_box {
   display: flex;
@@ -370,7 +412,7 @@ main .naiyou .search_word input#q::placeholder,
     width:var(--szp);
   }
   
-  main .naiyou .search_word input#q,
+  main .naiyou .search_word .kensaku_box,
   .opt.search_option :is(input,button,textarea,select):not(#rsb){
     width: 75%;
   }
@@ -388,6 +430,7 @@ main .naiyou .search_word input#q::placeholder,
   body > header{
     justify-content: space-around;
   }
+  
   h1#logo{
     flex-grow: 1;
     font-size: clamp(1rem, calc(1.5rem + 0.6vw), 2.4rem);
@@ -429,8 +472,13 @@ main .naiyou .search_word input#q::placeholder,
     padding:2.5%;
   }
   
-  main .naiyou .search_word input#q,
+  .search_word{
+    flex-flow: row wrap;
+  }
+  
+  main .naiyou .search_word .kensaku_box,
   .opt.search_option :is(input,button,textarea,select):not(#rsb){
     width: 95%;
   }
+
 }
