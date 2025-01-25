@@ -16,6 +16,15 @@ $(function() {
         $(this).children('i').css({ 'color': 'var(--amm2)' });
     });
 
+
+    $(function () {
+        // #q_clearをクリックしたときにinput#qをクリア
+        $('#q_clear').on('click', function () {
+            $('#q').val(''); // 入力フィールドの値を空にする
+        });
+    });
+
+
     // 検索ボタンの動作設定
     $('button#search_button').on('click', function () {
         let query = encodeURIComponent($('input#q').val().trim()); // 検索語句
@@ -88,6 +97,8 @@ $(function() {
 
 });
 
+
+
 $(function () {
     const allowedDomain = 'animanman.github.io';
 
@@ -101,7 +112,7 @@ $(function () {
         
         if (insertionTarget.length) {
             insertionTarget.prepend(`
-                <div class="animanman_gh_ad">
+                <div class="anisearch_ad">
                     <a href="https://${allowedDomain}/" target="_blank"><p>このサイトが気に入ったら<span>こちら</span>も使ってみてね</p></a>
                 </div>
             `);
@@ -111,28 +122,42 @@ $(function () {
     // CSSを挿入
     $('footer').after(`
         <style>
-        .animanman_gh_ad {
+        .anisearch_ad {
             background-color:#dcc9fb;
             border: 1px solid #7d74c7;
             border-radius: 5px;
             color: #7d74c7;
+            position: relative;
+            z-index: 1;
 
+            
             & a{
                 display:inline-block;
                 padding: 15px;
                 width:100%;
+                
+
+                & p{
+                    margin: 0;
+                    font-size: 16px;
+
+                    & span{
+                        color: #fff;
+                        text-decoration: underline;
+                    }
+                }
+
             }
 
-            & p{
-                margin: 0;
-                font-size: 16px;
+            &::after{
+                content: "";
+                padding: 23px;
+                background-color:#bb95f8;
+                mask:url("https://animanman.github.io/commons/rogo.svg#animanman") no-repeat center;
+                position: absolute;
+                right: 0;
+                z-index: -1;
             }
-
-            & span{
-                color: #fff;
-                text-decoration: underline;
-            }
-
         }
         </style>
     `);
