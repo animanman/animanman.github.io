@@ -4,6 +4,8 @@
 管理人ちゃんとは一切関係ありません。\
 https://animanman.github.io/
 
+[テスト版](https://animanman.github.io/test/)もよろしくね
+
 ## 更新履歴
 - **2025/1/3** \
   カテゴリを2025年現在のものにしました。\
