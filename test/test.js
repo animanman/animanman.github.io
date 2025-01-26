@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     const google_url = 'https://www.google.com/search?q=';
     const s_abbs_url = 'site:bbs.animanch.com/board/';
     const enc_s_abbs_url = encodeURIComponent(s_abbs_url);
@@ -16,110 +16,111 @@ $(function() {
         $(this).children('i').css({ 'color': 'var(--amm2)' });
     });
 
-
-    $(function () {
-        // #q_clearをクリックしたときにinput#qをクリア
-        $('#q_clear').on('click', function () {
-            $('#q').val(''); // 入力フィールドの値を空にする
-        });
-    });
-
+    // #q_clearをクリックしたときに入力フィールドをクリア
+    $('#q_clear').on('click', () => $('#q').val(''));
 
     // 検索ボタンの動作設定
-    $('button#search_button').on('click', function () {
-        let query = encodeURIComponent($('input#q').val().trim()); // 検索語句
-        const selectedCategory = $('select#s_category').val();
-        const selectedCategoryText = encodeURIComponent($('select#s_category option:selected').text());
-        let additionalFilters = "";
-
-        // 日付指定がある場合
-        const bfDay = $('input#ds_bfday').val();
-        const afDay = $('input#ds_afday').val();
-        if (bfDay) {
-            additionalFilters += ` before:${bfDay}`;
-        }
-        if (afDay) {
-            additionalFilters += ` after:${afDay}`;
-        }
-
-        // 一文字の場合に '>' を付加
-        if (query.length === 1) {
-            query = `>${query}`;
-        }
+    $('#search_button').on('click', function () {
+        const query = encodeURIComponent($('#q').val().trim());
+        const selectedCategory = $('#s_category').val();
+        const selectedCategoryText = encodeURIComponent($('#s_category option:selected').text());
+        const bfDay = $('#ds_bfday').val();
+        const afDay = $('#ds_afday').val();
+        const additionalFilters = `${bfDay ? ` before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`;
+        const finalQuery = query.length === 1 ? `>${query}` : query;
 
         const searchUrl = selectedCategory.includes('category')
-            ? `${google_url}${enc_s_abbs_url}+${query}+"カテゴリ『${decodeURIComponent(selectedCategoryText)}』"${additionalFilters}`
-            : `${google_url}${enc_s_abbs_url}+${query}${additionalFilters}`;
+            ? `${google_url}${enc_s_abbs_url}+${finalQuery}+"カテゴリ『${decodeURIComponent(selectedCategoryText)}』"${additionalFilters}`
+            : `${google_url}${enc_s_abbs_url}+${finalQuery}${additionalFilters}`;
 
-        // 新しいタブで検索結果を表示
         window.open(searchUrl, '_blank');
-        alert(`『${decodeURIComponent(query)}』${selectedCategory.includes('category') ? ` (カテゴリ『${decodeURIComponent(selectedCategoryText)}』)` : ''}${additionalFilters ? ` (${additionalFilters.trim()})` : ''} で検索しました`);
+        alert(`『${decodeURIComponent(query)}』${selectedCategory.includes('category') ? ` (カテゴリ『${decodeURIComponent(selectedCategoryText)}』)` : ''}${additionalFilters.trim() ? ` (${additionalFilters.trim()})` : ''} で検索しました`);
     });
-    
-    $(function() {
-    // チェックボックスとリンクの対応を定義
+
+    // チェックボックスとリンクの対応
     const linkMapping = {
         '#s_anm1': 'https://bbs.animanch.com/search/',
         '#s_anm2': 'https://bbs.animanch.com/search2/',
         '#s_anm3': 'https://bbs.animanch.com/searchRes/'
     };
 
-    // リンクを更新する関数
     function updateLinks() {
-        let query = $('#q').val().trim(); // 入力値を取得し、空白をトリム
-        const futanDiv = $('#futan');
-        futanDiv.empty(); // 既存のリンクをクリア
+        const query = $('#q').val().trim(); // 検索ワード
+        const futanDiv = $('#futan').empty();
+        const selectedCategory = $('#s_category').val(); // 選択されたカテゴリ
+        const bfDay = $('#ds_bfday').val(); // 指定された日付
+        const encodedQuery = encodeURIComponent(query.length === 1 ? `>${query}` : query);
 
-        if (!query) {
+        // 検索ワードがない場合、リンクを生成しない
+        if (!query && !$('#kakolog').is(':checked')) {
             futanDiv.append('<p>検索ワードを入力してください。</p>');
             return;
         }
 
-        // 一文字の場合は ">" を付け足す
-        if (query.length === 1) {
-            query = `>${query}`;
-        }
-
-        const encodedQuery = encodeURIComponent(query);
-
-        // 各チェックボックスの状態を確認してリンクを生成
         Object.entries(linkMapping).forEach(([checkbox, baseUrl]) => {
             if ($(checkbox).is(':checked')) {
-                futanDiv.append(`<p class=""><a href="${baseUrl}${encodedQuery}" target="_blank">${$(checkbox).next('label').text()}</a></p>`);
+                futanDiv.append(`<p><a href="${baseUrl}${encodedQuery}" target="_blank">${$(checkbox).next('label').text()}</a></p>`);
             }
         });
-    }
 
-    // 入力フィールドとチェックボックスの変更を監視
-    $('#q').on('input', updateLinks);
-    $('input[type="checkbox"]').on('change', updateLinks);
-});
+        // 過去ログリンクの生成処理
+        if ($('#kakolog').is(':checked')) {
+            let kakologBaseUrl = 'https://bbs.animanch.com/kakolog';
 
-});
+            // カテゴリ指定がある場合
+            if (selectedCategory && selectedCategory !== '') {
+                const categoryNumber = selectedCategory.replace('category', ''); // category番号を抽出
+                kakologBaseUrl += `${categoryNumber}`;
+            }
 
+            // 日付指定がある場合
+            if (bfDay) {
+                kakologBaseUrl += `/${bfDay}`;
+            }
 
+            // URLの末尾を整形
+            if (!kakologBaseUrl.endsWith('/')) {
+                kakologBaseUrl += '/';
+            }
 
-$(function () {
-    const allowedDomain = 'animanman.github.io';
-
-    // 現在のドメインを確認して挿入
-    if (!location.hostname.includes(allowedDomain)) {
-        const insertionTarget = $('main').length
-            ? $('main')
-            : $('header nav').length
-            ? $('header nav')
-            : $('header');
-        
-        if (insertionTarget.length) {
-            insertionTarget.prepend(`
-                <div class="anisearch_ad">
-                    <a href="https://${allowedDomain}/" target="_blank"><p>このサイトが気に入ったら<span>こちら</span>も使ってみてね</p></a>
-                </div>
-            `);
+            // 生成したリンクを追加
+            futanDiv.append(`<p><a href="${kakologBaseUrl}" target="_blank">カテゴリー過去ログ${bfDay ? ` (${bfDay})` : ''}</a></p>`);
         }
     }
 
-    // CSSを挿入
+    // 検索ワード、カテゴリ、日付、チェックボックスの変更を監視
+    $('#q').on('input', updateLinks);
+    $('input[type="checkbox"], #s_category, #ds_bfday').on('change', updateLinks);
+
+    // 初期化処理
+    updateLinks();
+
+    // リセットボタンの動作設定
+    $('.reset_bottons').on('click', function () {
+        const parentOpt = $(this).closest('.opt');
+        parentOpt.find('select').prop('selectedIndex', 0);
+        parentOpt.find('input[type="text"], input[type="number"], input[type="date"]').val('');
+        parentOpt.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
+
+        if ($(this).is('#rscb')) {
+            $('#futan').empty();
+        }
+    });
+
+    // 広告挿入
+    const allowedDomain = 'animanman.github.io';
+    if (!location.hostname.includes(allowedDomain)) {
+        const insertionTarget = $('main').length ? $('main') : $('header nav').length ? $('header nav') : $('header');
+        insertionTarget.prepend(`
+            <div class="anisearch_ad">
+                <a href="https://${allowedDomain}/" target="_blank">
+                    <p>このサイトが気に入ったら<span>こちら</span>も使ってみてね</p>
+                </a>
+            </div>
+        `);
+    }
+
+    // スタイル挿入
     $('footer').after(`
         <style>
         .anisearch_ad {
@@ -129,12 +130,13 @@ $(function () {
             color: #7d74c7;
             position: relative;
             z-index: 1;
+            text-align: center;
 
             
             & a{
                 display:inline-block;
-                padding: 15px;
                 width:100%;
+                padding: 15px;
                 
 
                 & p{
