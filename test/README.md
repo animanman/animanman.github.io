@@ -22,6 +22,12 @@
 
    input#qのfocus-visibleをoutline:none;にし、.kensaku_boxにoutlineを引くように\
    ついでに❌で#qの文字列を消せるように
+
+   .opt(オプション)のリセットボタンがそれぞれ効くように
+
+   チェックを入れているとカテゴリごとの過去ログ倉庫のリンクが反映されるように(日付指定も対応)
+
+   Googleの他にYahooJapanとDuckDuckGoに一応対応(Bing、Braveはまだ)
   
 
 ### 実装予定
