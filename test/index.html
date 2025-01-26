@@ -44,7 +44,7 @@
           <input type="text" id="q" value="" placeholder="検索したい語句を入れるゲー"><span id="q_clear"><i class="fas fa-times"></i></span>
         </div></div>
         <details open class="search_option opt">
-          <summary class="option_title opt_t"><p>オプション</p><button onclick="reset" id="rsb"><i class="fas fa-redo-alt"></i></button></summary>
+          <summary class="option_title opt_t"><p>オプション</p><button class="reset_bottons" onclick="reset" id="rsb"><i class="fas fa-redo-alt"></i></button></summary>
           <div class="opt_contents opt_c">
           <div class="search_category">
             <label><strong>カテゴリー</strong></label>
@@ -122,7 +122,7 @@
 </div>
       </div>
       <details open class="cyau_naiyou opt">
-      <summary class="cyau_naiyou_title opt_t"><p>その他 検索補助機能 (リンクのみ生成)</p></summary>
+      <summary class="cyau_naiyou_title opt_t"><p>その他 検索補助機能 (リンクのみ生成)</p><button class="reset_bottons" onclick="reset_check" id="rscb"><i class="fas fa-redo-alt"></i></button></summary>
 
         <div class="animan_nai_naiyou opt_c">
           <p>あにまん掲示板内(公式)のスレッド検索結果</p>
@@ -145,8 +145,8 @@
           <div class="animan_nai_check_box beforecategory">
             <div class="animan_nai_check">
               <input type="checkbox" id="kakolog" name="kakolog_category" value="kakolog_anm_cate">
-              <label for="kakolog_anm_cate">カテゴリー過去ログ<span class="chu_i_gaki">準備中なので機能しません</span></label>
-              <p class="chu_i_gaki">オプションのカテゴリーが指定されている場合のみ、日付検索の以前(before)も反映されます。検索ワードは反映されません</p>
+              <label for="kakolog_anm_cate">カテゴリー過去ログ</label>
+              <p class="chu_i_gaki">オプションのカテゴリーや日付検索の以前(before)が反映されます。検索ワードは反映されません</p>
             </div>
           </div>
 
