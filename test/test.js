@@ -1,5 +1,5 @@
 $(function () {
-    const s_abbs_url = 'bbs.animanch.com/board/';
+    const s_abbs_url = 'site:bbs.animanch.com/board/';
     const enc_s_abbs_url = encodeURIComponent(s_abbs_url);
 
     // SNSボタンの動作設定
@@ -28,7 +28,8 @@ $(function () {
             baseUrl: 'https://search.yahoo.co.jp/search?p=',
             supportsDate: true,
             dateFormat: (bfDay, afDay) => `${bfDay ? ` before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`,
-            additionalParams: `&vs=${enc_s_abbs_url}` // ドメイン指定
+            customUrl: (query, categoryText, additionalFilters) =>
+                `https://search.yahoo.co.jp/search?p=${query}${categoryText ? `+"カテゴリ『${categoryText}』"` : ''}${additionalFilters}&vs=bbs.animanch.com/board/`
         },
         se_Bing: {
             baseUrl: 'https://www.bing.com/search?q=',
@@ -68,10 +69,16 @@ $(function () {
             ? engineConfig.dateFormat(bfDay, afDay)
             : '';
 
-        const searchUrl = `${engineConfig.baseUrl}${finalQuery}${additionalFilters}${engineConfig.additionalParams || ''}`;
+        // カテゴリ部分を復元
+        const categoryText = selectedCategory.includes('category') ? decodeURIComponent(selectedCategoryText) : '';
+
+        // Yahoo Japan の場合はカスタム URL を使用
+        const searchUrl = selectedEngine === 'se_YahooJ'
+            ? engineConfig.customUrl(finalQuery, categoryText, additionalFilters)
+            : `${engineConfig.baseUrl}${enc_s_abbs_url}+${finalQuery}${categoryText ? `+カテゴリ『${categoryText}』` : ''}${additionalFilters}`;
 
         window.open(searchUrl, '_blank');
-        alert(`『${decodeURIComponent(query)}』${selectedCategory.includes('category') ? ` (カテゴリ『${decodeURIComponent(selectedCategoryText)}』)` : ''}${additionalFilters.trim() ? ` (${additionalFilters.trim()})` : ''} を${selectedEngineName}で検索しました`);
+        alert(`『${decodeURIComponent(query)}』${categoryText ? ` (カテゴリ『${categoryText}』)` : ''}${additionalFilters.trim() ? ` (${additionalFilters.trim()})` : ''} を${selectedEngineName}で検索しました`);
     });
 
     // チェックボックスとリンクの対応
