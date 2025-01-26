@@ -284,6 +284,7 @@ main .naiyou .search_word input#q::placeholder,
   & #q_clear{
     display: inline-block;
     width: 20px;
+    opacity: 0.5;
   }
 }
 
@@ -352,7 +353,7 @@ details{
   }
 }
 
-.opt_c select:focus{
+.opt_c :is(select:focus,input[type=date]:focus-visible){
   outline:2px solid var(--fc2);
 }
 
