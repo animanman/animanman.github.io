@@ -1,6 +1,5 @@
 $(function () {
-    const google_url = 'https://www.google.com/search?q=';
-    const s_abbs_url = 'site:bbs.animanch.com/board/';
+    const s_abbs_url = 'bbs.animanch.com/board/';
     const enc_s_abbs_url = encodeURIComponent(s_abbs_url);
 
     // SNSボタンの動作設定
@@ -19,22 +18,60 @@ $(function () {
     // #q_clearをクリックしたときに入力フィールドをクリア
     $('#q_clear').on('click', () => $('#q').val(''));
 
-    // 検索ボタンの動作設定
+    const SearchMapping = {
+        se_Google: {
+            baseUrl: 'https://www.google.com/search?q=',
+            supportsDate: true,
+            dateFormat: (bfDay, afDay) => `${bfDay ? ` before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`
+        },
+        se_YahooJ: {
+            baseUrl: 'https://search.yahoo.co.jp/search?p=',
+            supportsDate: true,
+            dateFormat: (bfDay, afDay) => `${bfDay ? ` before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`,
+            additionalParams: `&vs=${enc_s_abbs_url}` // ドメイン指定
+        },
+        se_Bing: {
+            baseUrl: 'https://www.bing.com/search?q=',
+            supportsDate: false,
+            dateFormat: () => ''
+        },
+        se_DDG: {
+            baseUrl: 'https://duckduckgo.com/?q=',
+            supportsDate: true,
+            dateFormat: (bfDay, afDay) => `&df=${afDay || ''}..${bfDay || ''}`
+        },
+        se_Brave: {
+            baseUrl: 'https://search.brave.com/search?q=',
+            supportsDate: false,
+            dateFormat: () => ''
+        }
+    };
+
     $('#search_button').on('click', function () {
         const query = encodeURIComponent($('#q').val().trim());
         const selectedCategory = $('#s_category').val();
         const selectedCategoryText = encodeURIComponent($('#s_category option:selected').text());
         const bfDay = $('#ds_bfday').val();
         const afDay = $('#ds_afday').val();
-        const additionalFilters = `${bfDay ? ` before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`;
         const finalQuery = query.length === 1 ? `>${query}` : query;
 
-        const searchUrl = selectedCategory.includes('category')
-            ? `${google_url}${enc_s_abbs_url}+${finalQuery}+"カテゴリ『${decodeURIComponent(selectedCategoryText)}』"${additionalFilters}`
-            : `${google_url}${enc_s_abbs_url}+${finalQuery}${additionalFilters}`;
+        const selectedEngine = $('#s_engine').val();
+        const selectedEngineName = $('#s_engine option:selected').text();
+        const engineConfig = SearchMapping[selectedEngine];
+
+        if (!engineConfig) {
+            alert('無効な検索エンジンが選択されています。');
+            return;
+        }
+
+        const additionalFilters = engineConfig.supportsDate
+            ? engineConfig.dateFormat(bfDay, afDay)
+            : '';
+
+        const searchUrl = `${engineConfig.baseUrl}${finalQuery}${additionalFilters}${engineConfig.additionalParams || ''}`;
 
         window.open(searchUrl, '_blank');
-        alert(`『${decodeURIComponent(query)}』${selectedCategory.includes('category') ? ` (カテゴリ『${decodeURIComponent(selectedCategoryText)}』)` : ''}${additionalFilters.trim() ? ` (${additionalFilters.trim()})` : ''} で検索しました`);
+        alert(`『${decodeURIComponent(query)}』${selectedCategory.includes('category') ? ` (カテゴリ『${decodeURIComponent(selectedCategoryText)}』)` : ''}${additionalFilters.trim() ? ` (${additionalFilters.trim()})` : ''} を${selectedEngineName}で検索しました`);
     });
 
     // チェックボックスとリンクの対応
