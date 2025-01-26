@@ -4,6 +4,8 @@
 正規版ページは[こちら](https://animanman.github.io/)\
 正規版のソースは[こちら](https://github.com/animanman/animanman.github.io/)
 
+[連絡先](https://zawazawa.jp/animamman/topic/1)
+
 ## 機能実装
 - <ins>**2025/1/22**</ins>\
   testページ作成
