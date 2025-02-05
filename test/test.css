@@ -9,6 +9,7 @@
   box-sizing: border-box;
   background-clip: padding-box;
   /*! appearance: none; */
+  animation-duration: 1s;
 }
 
 /*★基本設定*/
@@ -343,6 +344,7 @@ main .naiyou .search_word input#q::placeholder,
 }
 
 details{
+  
   & summary > p::before{
     content: '\f105';
     padding: 3px;
@@ -375,6 +377,30 @@ details{
 #futan {
   width: 95%;
   background-color: var(--bg3);
+}
+
+#modal{
+  position: fixed;
+  background:rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  
+  &:target{
+    display: flex;
+  }
+  
+  & #mdl_window{
+    background-color:var(--fc9);
+    padding: 1%;
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+  }
 }
 
 @media screen and (min-width: 721px){
