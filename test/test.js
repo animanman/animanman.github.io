@@ -15,21 +15,21 @@ $(function () {
         $(this).children('i').css({ 'color': 'var(--amm2)' });
     });
 
-    // #q_clearをクリックしたときに入力フィールドをクリア
-    $('#q_clear').on('click', () => $('#q').val(''));
-
+    
     const SearchMapping = {
         se_Google: {
             baseUrl: 'https://www.google.com/search?q=',
             supportsDate: true,
-            dateFormat: (bfDay, afDay) => `${bfDay ? ` before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`
+            dateFormat: (bfDay, afDay) => 
+                `${bfDay ? `before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`
         },
         se_YahooJ: {
             baseUrl: 'https://search.yahoo.co.jp/search?p=',
             supportsDate: true,
-            dateFormat: (bfDay, afDay) => `${bfDay ? ` before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`,
-            customUrl: (query, categoryText, additionalFilters) =>
-                `https://search.yahoo.co.jp/search?p=${query}${categoryText ? `+"カテゴリ『${categoryText}』"` : ''}${additionalFilters}&vs=bbs.animanch.com/board/`
+            dateFormat: (bfDay, afDay) => 
+                `${bfDay ? `before:${bfDay}` : ''}${afDay ? ` after:${afDay}` : ''}`,
+            customUrl: (query, categoryText, additionalFilters) => 
+                `https://search.yahoo.co.jp/search?p=${query}${categoryText ? `+カテゴリ『${categoryText}』` : ''}${additionalFilters}&vs=bbs.animanch.com/board/`
         },
         se_Bing: {
             baseUrl: 'https://www.bing.com/search?q=',
@@ -47,7 +47,7 @@ $(function () {
             dateFormat: () => ''
         }
     };
-
+    
     $('#search_button').on('click', function () {
         const query = encodeURIComponent($('#q').val().trim());
         const selectedCategory = $('#s_category').val();
@@ -55,31 +55,38 @@ $(function () {
         const bfDay = $('#ds_bfday').val();
         const afDay = $('#ds_afday').val();
         const finalQuery = query.length === 1 ? `>${query}` : query;
+    
+        const selectedEngine = $('#s_engine').val()?.trim();
+const normalizedEngine = selectedEngine 
+    ? Object.keys(SearchMapping).find(key => key.toLowerCase() === selectedEngine.toLowerCase()) 
+    : null;
+const engineConfig = normalizedEngine ? SearchMapping[normalizedEngine] : null;
 
-        const selectedEngine = $('#s_engine').val();
-        const selectedEngineName = $('#s_engine option:selected').text();
-        const engineConfig = SearchMapping[selectedEngine];
+if (!engineConfig) {
+    alert('無効な検索エンジンが選択されています。');
+    return;
+}
 
-        if (!engineConfig) {
-            alert('無効な検索エンジンが選択されています。');
-            return;
-        }
-
-        const additionalFilters = engineConfig.supportsDate
-            ? engineConfig.dateFormat(bfDay, afDay)
+    
+        const additionalFilters = engineConfig.supportsDate 
+            ? engineConfig.dateFormat(bfDay, afDay) 
             : '';
-
+    
         // カテゴリ部分を復元
-        const categoryText = selectedCategory.includes('category') ? decodeURIComponent(selectedCategoryText) : '';
-
+        const categoryText = selectedCategory.includes('category') 
+            ? decodeURIComponent(selectedCategoryText) 
+            : '';
+    
         // Yahoo Japan の場合はカスタム URL を使用
         const searchUrl = selectedEngine === 'se_YahooJ'
             ? engineConfig.customUrl(finalQuery, categoryText, additionalFilters)
-            : `${engineConfig.baseUrl}${enc_s_abbs_url}+${finalQuery}${categoryText ? `+カテゴリ『${categoryText}』` : ''}${additionalFilters}`;
-
+            : `${engineConfig.baseUrl}${enc_s_abbs_url}+${finalQuery}${categoryText ? `+カテゴリ『${categoryText}』` : ''}${engineConfig.supportsDate ? additionalFilters : ''}`;
+    
         window.open(searchUrl, '_blank');
         alert(`『${decodeURIComponent(query)}』${categoryText ? ` (カテゴリ『${categoryText}』)` : ''}${additionalFilters.trim() ? ` (${additionalFilters.trim()})` : ''} を${selectedEngineName}で検索しました`);
     });
+    
+
 
     // チェックボックスとリンクの対応
     const linkMapping = {
@@ -94,62 +101,79 @@ $(function () {
         const selectedCategory = $('#s_category').val(); // 選択されたカテゴリ
         const bfDay = $('#ds_bfday').val(); // 指定された日付
         const encodedQuery = encodeURIComponent(query.length === 1 ? `>${query}` : query);
-
-        // 検索ワードがない場合、リンクを生成しない
-        if (!query && !$('#kakolog').is(':checked')) {
+        const isKakologChecked = $('#kakolog').is(':checked'); // 過去ログチェックボックスの状態
+    
+        // `#kakolog` がチェックされておらず、検索ワードもない場合は警告メッセージを表示
+        if (!query && !isKakologChecked) {
             futanDiv.append('<p>検索ワードを入力してください。</p>');
             return;
         }
-
-        Object.entries(linkMapping).forEach(([checkbox, baseUrl]) => {
-            if ($(checkbox).is(':checked')) {
-                futanDiv.append(`<p><a href="${baseUrl}${encodedQuery}" target="_blank">${$(checkbox).next('label').text()}</a></p>`);
-            }
-        });
-
-        // 過去ログリンクの生成処理
-        if ($('#kakolog').is(':checked')) {
+    
+        // `anm_nai_search` のチェックボックスのリンクを先に追加
+        if (query) {
+            Object.entries(linkMapping).forEach(([checkbox, baseUrl]) => {
+                if ($(checkbox).is(':checked')) {
+                    futanDiv.append(`<p><a href="${baseUrl}${encodedQuery}" target="_blank">${$(checkbox).next('label').text()}</a></p>`);
+                }
+            });
+        }
+    
+        // `#kakolog` のリンクは最後に追加
+        if (isKakologChecked) {
             let kakologBaseUrl = 'https://bbs.animanch.com/kakolog';
-
+    
             // カテゴリ指定がある場合
             if (selectedCategory && selectedCategory !== '') {
                 const categoryNumber = selectedCategory.replace('category', ''); // category番号を抽出
                 kakologBaseUrl += `${categoryNumber}`;
             }
-
+    
             // 日付指定がある場合
             if (bfDay) {
                 kakologBaseUrl += `/${bfDay}`;
             }
-
+    
             // URLの末尾を整形
             if (!kakologBaseUrl.endsWith('/')) {
                 kakologBaseUrl += '/';
             }
-
-            // 生成したリンクを追加
+    
+            // `#kakolog` のリンクを追加（最後に追加することで `anm_nai_search` のリンクより下に表示）
             futanDiv.append(`<p><a href="${kakologBaseUrl}" target="_blank">カテゴリー過去ログ${bfDay ? ` (${bfDay})` : ''}</a></p>`);
         }
     }
-
+    
     // 検索ワード、カテゴリ、日付、チェックボックスの変更を監視
     $('#q').on('input', updateLinks);
     $('input[type="checkbox"], #s_category, #ds_bfday').on('change', updateLinks);
-
+    
     // 初期化処理
     updateLinks();
+    
+    
+    // #q_clearをクリックしたときに入力フィールドをクリアし、リンクを更新
+$('#q_clear').on('click', () => {
+    $('#q').val('');
+    updateLinks(); // クリア後にリンクを更新
+});
 
-    // リセットボタンの動作設定
-    $('.reset_bottons').on('click', function () {
-        const parentOpt = $(this).closest('.opt');
-        parentOpt.find('select').prop('selectedIndex', 0);
-        parentOpt.find('input[type="text"], input[type="number"], input[type="date"]').val('');
-        parentOpt.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
+// リセットボタンの動作設定
+$('.reset_bottons').on('click', function () {
+    const parentOpt = $(this).closest('.opt');
+    parentOpt.find('select').prop('selectedIndex', 0);
+    parentOpt.find('input[type="text"], input[type="number"], input[type="date"]').val('');
+    parentOpt.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
 
-        if ($(this).is('#rscb')) {
-            $('#futan').empty();
-        }
-    });
+    // #rscb なら #futan を空にするのではなく、updateLinks() を実行
+    if ($(this).is('#rscb') || $(this).is('#rsb')) {
+        updateLinks();
+    }
+});
+
+
+
+
+
 
     // 広告挿入
     const allowedDomain = 'animanman.github.io';
