@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         下書き保存機能
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  本文の下書きをlocalStorageに保存し、呼び出す機能を追加
+// @version      1.1
+// @description  本文の下書きをlocalStorageに保存し、呼び出す機能に一括削除や個別削除機能を追加（スタイル調整済み）
 // @match        https://bbs.animanch.com/*
 // @grant        none
 // ==/UserScript==
@@ -10,105 +10,101 @@
 (function() {
     'use strict';
 
-    // localStorageキー
     const STORAGE_KEY = "drafts";
-
-    // 下書き保存可能な最大件数
     const MAX_DRAFTS = 10;
 
-    // Utility: 現在の下書き配列を取得
-    function getDrafts() {
+    // LocalStorage関連のユーティリティ
+    const getDrafts = () => {
         const data = localStorage.getItem(STORAGE_KEY);
         return data ? JSON.parse(data) : [];
-    }
+    };
+    const setDrafts = drafts => localStorage.setItem(STORAGE_KEY, JSON.stringify(drafts));
 
-    // Utility: 下書き配列を保存
-    function setDrafts(drafts) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(drafts));
-    }
-
-    // 下書き保存用のモーダルを生成
-    function createModal() {
-        // 既に存在している場合は再利用
-        if(document.getElementById('draftModal')) return;
-
+    // モーダル共通の作成ヘルパー
+    const createModalElement = (id, zIndex = 10000) => {
         const modal = document.createElement('div');
-        modal.id = "draftModal";
-        modal.style.position = "fixed";
-        modal.style.top = "50%";
-        modal.style.left = "50%";
-        modal.style.transform = "translate(-50%, -50%)";
-        modal.style.background = "#fff";
-        modal.style.border = "1px solid #ccc";
-        modal.style.padding = "20px";
-        modal.style.zIndex = "10000";
-        modal.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+        modal.id = id;
+        modal.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.2);
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: ${zIndex};
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            font-size: 12px;
+            max-height: 80%;
+            overflow-y: auto;
+        `;
+        return modal;
+    };
 
-        // 閉じるボタン
+    // メインの保存確認モーダル
+    const createSaveModal = () => {
+        if(document.getElementById('draftModal')) return;
+        const modal = createModalElement('draftModal', 10000);
+
+        // モーダル上部に固定する閉じるボタン
         const closeBtn = document.createElement('span');
         closeBtn.textContent = "×";
-        closeBtn.style.float = "right";
-        closeBtn.style.cursor = "pointer";
-        closeBtn.addEventListener('click', () => {
-            document.body.removeChild(modal);
-        });
+        closeBtn.style.cssText = `
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            cursor: pointer;
+            font-size: 18px;
+        `;
+        closeBtn.addEventListener('click', () => modal.remove());
         modal.appendChild(closeBtn);
 
-        // 本文
         const message = document.createElement('p');
         message.textContent = "下書きに保存しますか？";
         modal.appendChild(message);
 
+        const btnContainer = document.createElement('div');
         // 「はい」ボタン
-        const saveBtn = document.createElement('button');
-        saveBtn.textContent = "はい";
-        saveBtn.addEventListener('click', () => {
+        const yesBtn = document.createElement('button');
+        yesBtn.textContent = "はい";
+        yesBtn.addEventListener('click', () => {
             saveDraft();
-            document.body.removeChild(modal);
+            modal.remove();
         });
-        modal.appendChild(saveBtn);
+        btnContainer.appendChild(yesBtn);
 
-        // 「他の下書き」ボタン
-        const listBtn = document.createElement('button');
-        listBtn.textContent = "他の下書き";
-        listBtn.style.marginLeft = "10px";
-        listBtn.addEventListener('click', () => {
-            showDraftList();
-        });
-        modal.appendChild(listBtn);
+        // 「履歴一覧」ボタン
+        const historyBtn = document.createElement('button');
+        historyBtn.textContent = "履歴一覧";
+        historyBtn.style.marginLeft = "10px";
+        historyBtn.addEventListener('click', showDraftList);
+        btnContainer.appendChild(historyBtn);
 
+        modal.appendChild(btnContainer);
         document.body.appendChild(modal);
-    }
+    };
 
-    // 下書き一覧をモーダルで表示する
-    function showDraftList() {
-        // 既存の一覧があれば一度削除
+    // 下書き一覧モーダルの表示
+    const showDraftList = () => {
         let listModal = document.getElementById('draftListModal');
-        if(listModal) {
-            document.body.removeChild(listModal);
-        }
-        listModal = document.createElement('div');
-        listModal.id = 'draftListModal';
-        listModal.style.position = "fixed";
-        listModal.style.top = "50%";
-        listModal.style.left = "50%";
-        listModal.style.transform = "translate(-50%, -50%)";
-        listModal.style.background = "#fff";
-        listModal.style.border = "1px solid #ccc";
-        listModal.style.padding = "20px";
-        listModal.style.zIndex = "10001";
-        listModal.style.maxHeight = "80%";
-        listModal.style.overflowY = "auto";
+        if(listModal) listModal.remove();
+        listModal = createModalElement('draftListModal', 10001);
 
-        // 閉じるボタン
-        const closeBtn = document.createElement('span');
-        closeBtn.textContent = "×";
-        closeBtn.style.float = "right";
-        closeBtn.style.cursor = "pointer";
-        closeBtn.addEventListener('click', () => {
-            document.body.removeChild(listModal);
+        // 一括削除ボタン
+        const deleteAllBtn = document.createElement('button');
+        deleteAllBtn.textContent = "🗑 一括削除";
+        deleteAllBtn.style.marginBottom = "10px";
+        deleteAllBtn.addEventListener('click', () => {
+            if(confirm("すべての下書きを削除してもよろしいですか？")) {
+                localStorage.removeItem(STORAGE_KEY);
+                listModal.innerHTML = "";
+                listModal.appendChild(deleteAllBtn);
+                const emptyMsg = document.createElement('p');
+                emptyMsg.textContent = "下書きはありません。";
+                listModal.appendChild(emptyMsg);
+            }
         });
-        listModal.appendChild(closeBtn);
+        listModal.appendChild(deleteAllBtn);
 
         const drafts = getDrafts();
         if(drafts.length === 0) {
@@ -117,116 +113,191 @@
             listModal.appendChild(noDraft);
         } else {
             drafts.slice(0, MAX_DRAFTS).forEach((draft, index) => {
-                const item = document.createElement('div');
-                item.style.borderBottom = "1px solid #eee";
-                item.style.padding = "5px";
-                // 日付と本文冒頭20文字を表示
-                item.textContent = `${draft.date} - ${draft.text.substring(0,20)}`;
-                item.style.cursor = "pointer";
-                item.addEventListener('click', () => {
+                const itemContainer = document.createElement('div');
+                itemContainer.style.cssText = `
+                    border-bottom: 1px solid #eee;
+                    padding: 5px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                `;
+
+                const itemInfo = document.createElement('span');
+                itemInfo.textContent = `${draft.date} - ${draft.text.substring(0,20)}`;
+                itemInfo.style.cursor = "pointer";
+                itemInfo.addEventListener('click', () => {
                     loadDraft(draft);
-                    document.body.removeChild(listModal);
+                    document.getElementById('draftModal')?.remove();
+                    listModal.remove();
                 });
-                listModal.appendChild(item);
+                itemContainer.appendChild(itemInfo);
+
+                const delBtn = document.createElement('button');
+                delBtn.textContent = "×";
+                delBtn.style.marginLeft = "10px";
+                delBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const currentDrafts = getDrafts();
+                    currentDrafts.splice(index, 1);
+                    setDrafts(currentDrafts);
+                    listModal.remove();
+                    showDraftList();
+                });
+                itemContainer.appendChild(delBtn);
+                listModal.appendChild(itemContainer);
             });
         }
 
+        // モーダル上部固定の閉じるボタン
+        const closeBtn = document.createElement('span');
+        closeBtn.textContent = "×";
+        closeBtn.style.cssText = `
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            cursor: pointer;
+            font-size: 18px;
+        `;
+        closeBtn.addEventListener('click', () => listModal.remove());
+        listModal.appendChild(closeBtn);
+
         document.body.appendChild(listModal);
-    }
+    };
 
     // 下書きを保存する処理
-    function saveDraft() {
-        // 日付の取得
+    const saveDraft = () => {
         const now = new Date().toLocaleString();
-
-        // スレ立てかレスかで取得する要素が異なる
-        // カテゴリーについては、スレ立ての場合はselectの値、
-        // レスの場合は #resform の #breadcrumb の2番目の<a>のURLかテキストなどで判断
         let category = "";
         const selectCategory = document.querySelector('#resform select[name="category"]');
         if(selectCategory && selectCategory.offsetParent !== null) {
-            // selectが表示されている場合はスレ立て
             category = selectCategory.value;
         } else {
-            // レス投稿時：#breadcrumb内の2番目のdivを利用
             const breadcrumbItems = document.querySelectorAll('#resform #breadcrumb [itemtype="http://data-vocabulary.org/Breadcrumb"]');
             if(breadcrumbItems.length >= 2) {
                 const a = breadcrumbItems[1].querySelector('a[itemprop="url"]');
-                if(a) {
-                    // URLやテキストを利用
-                    category = a.href || a.textContent;
-                }
+                if(a) category = a.href || a.textContent;
             }
         }
-
-        // 名前と本文の取得
         const nameEl = document.querySelector('#resform input[name="name"]');
         const textEl = document.querySelector('#resform textarea[name="text"]');
-        const name = nameEl ? nameEl.value : "";
-        const text = textEl ? textEl.value : "";
-
-        // 下書きオブジェクトの作成
         const draft = {
             date: now,
-            category: category,
-            name: name,
-            text: text
+            category: nameEl ? category : "",
+            name: nameEl ? nameEl.value : "",
+            text: textEl ? textEl.value : ""
         };
 
-        // 既存の下書きを取得して新規追加（最大件数まで）
-        let drafts = getDrafts();
-        // 新しい下書きを先頭に追加
+        const drafts = getDrafts();
         drafts.unshift(draft);
-        if(drafts.length > MAX_DRAFTS) {
-            drafts = drafts.slice(0, MAX_DRAFTS);
-        }
+        if(drafts.length > MAX_DRAFTS) drafts.length = MAX_DRAFTS;
         setDrafts(drafts);
         alert("下書きを保存しました");
-    }
+    };
 
-    // 下書きをフォームに反映する処理
-    function loadDraft(draft) {
-        // カテゴリー
+    // フォームに下書きを反映
+    const loadDraft = draft => {
         const selectCategory = document.querySelector('#resform select[name="category"]');
-        if(selectCategory) {
-            // 下書きのカテゴリーが存在する場合、selectの値をセット（選択肢に無い場合は無視）
-            selectCategory.value = draft.category;
-        }
-        // 名前
+        if(selectCategory) selectCategory.value = draft.category;
         const nameEl = document.querySelector('#resform input[name="name"]');
-        if(nameEl) {
-            nameEl.value = draft.name;
-        }
-        // 本文
+        if(nameEl) nameEl.value = draft.name;
         const textEl = document.querySelector('#resform textarea[name="text"]');
-        if(textEl) {
-            textEl.value = draft.text;
-        }
-    }
+        if(textEl) textEl.value = draft.text;
+    };
 
-    // フォームのtextarea上に下書きボタンを設置する
-    function insertDraftButton() {
+    // テキストエリア上に下書き保存ボタンを追加（右下に絶対配置、半透明）
+    const insertDraftButton = () => {
         const textArea = document.querySelector('#resform textarea[name="text"]');
         if(textArea) {
-            // ボタン作成
+            const container = textArea.parentNode;
+            container.style.position = 'relative';
+
             const btn = document.createElement('button');
             btn.type = "button";
-            btn.textContent = "💾"; // アイコンとしてディスクの絵文字など
-            btn.style.marginBottom = "5px";
-            btn.addEventListener('click', createModal);
-            // textareaの直前に挿入
-            textArea.parentNode.insertBefore(btn, textArea);
-        }
-    }
+            btn.id = "draftsave";
+            btn.textContent = "💾";
+            btn.style.cssText = `
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                opacity: 0.5;
+            `;
+            btn.addEventListener('mouseover', () => btn.style.opacity = "1");
+            btn.addEventListener('mouseout', () => btn.style.opacity = "0.5");
+            btn.addEventListener('click', createSaveModal);
 
-    // 初期化
-    function init() {
-        // DOMが完全に読み込まれた後に実行
-        window.addEventListener('load', () => {
-            insertDraftButton();
-        });
-    }
+            container.appendChild(btn);
+        }
+    };
+
+    const init = () => {
+        window.addEventListener('load', insertDraftButton);
+    };
 
     init();
-
 })();
+
+
+(function(){
+    'use strict';
+
+    // 1) ポップアップ用のスタイルをまとめて定義
+    const style = document.createElement('style');
+    style.id = 'respopupStyle';
+    style.textContent = `
+        /* ポップアップ本体 */
+        #respopup {
+            font-site:1.4rem;
+            display: block;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.25);
+            z-index: 10001;
+            max-width: 930px;
+            margin-top: 10px;
+            & p ~ *{display:block;}
+        }
+
+        /* 投票ボタンや削除ボタンなどを非表示に */
+        #respopup .vote,
+        #respopup .voteBtns,
+        #respopup .resheader .badge {
+            display: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // 2) クリックされたレスの内容をポップアップとして挿入する関数
+    const insertResponsePopup = (li) => {
+        const header = li.querySelector('.resheader');
+        const body = li.querySelector('.resbody');
+        if (!header || !body) return;
+
+        // 既存のポップアップがあれば削除
+        const prevPopup = document.getElementById('respopup');
+        if (prevPopup) prevPopup.remove();
+
+        // p要素を作成してIDを付与
+        const popup = document.createElement('div');
+        popup.id = 'respopup';
+
+        // レスのヘッダーと本文をまとめて挿入
+        popup.innerHTML = header.outerHTML + body.outerHTML;
+
+        // #resform 内の .alert.alert-info.infotext の直後に挿入
+        const infoText = document.querySelector('#resform .alert.alert-info.infotext');
+        if (infoText) {
+            infoText.insertAdjacentElement('afterend', popup);
+        }
+    };
+
+    // 3) span.resnumberがクリックされたときに処理を実行
+    document.addEventListener('click', (e) => {
+        const resNumber = e.target.closest('.resheader .resnumber');
+        if (!resNumber) return;
+        const li = resNumber.closest('li');
+        if (li) {
+            insertResponsePopup(li);
+        }
+    });
+})();
+
