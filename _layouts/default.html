@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <!-- 文字コード・viewportなど -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  
+  <!-- ページタイトルと説明 -->
   <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description | escape }}">
+  
+  <!-- Open Graph Protocol の設定（ページごとに可変） -->
+  <meta property="og:title" content="{{ page.title | escape }}">
+  <meta property="og:description" content="{{ page.description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% if page.og_image %}
+    <meta property="og:image" content="{{ page.og_image }}">
+  {% endif %}
+  
+  <!-- CSS の読み込み -->
   <link rel="stylesheet" href="/commons/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- ファビコン -->
+  <link rel="icon" href="https://animanman.github.io/favicon.ico">
+  
+  <!-- jQuery のCDN読み込み -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
   {% include header.html %}
@@ -11,6 +34,9 @@
     {{ content }}
   </main>
   {% include footer.html %}
+  
+  <!-- ローカルのJavaScriptファイル -->
   <script src="/commons/js/script.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </body>
 </html>
