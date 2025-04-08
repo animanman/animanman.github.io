@@ -18,9 +18,14 @@
     <meta property="og:image" content="{{ page.og_image }}">
   {% endif %}
   
-  <!-- CSS の読み込み -->
+  <!-- 共通CSSの読み込み -->
   <link rel="stylesheet" href="/commons/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- ページ独自のCSSが指定されている場合の読み込み -->
+  {% if page.custom_style %}
+    <link rel="stylesheet" href="{{ page.custom_style }}">
+  {% endif %}
   
   <!-- ファビコン -->
   <link rel="icon" href="https://animanman.github.io/favicon.ico">
@@ -35,8 +40,15 @@
   </main>
   {% include footer.html %}
   
-  <!-- ローカルのJavaScriptファイル -->
+  <!-- 共通JavaScriptファイル -->
   <script src="/commons/js/script.js"></script>
+  
+  <!-- ページ独自のJavaScriptが指定されている場合の読み込み -->
+  {% if page.custom_script %}
+    <script src="{{ page.custom_script }}"></script>
+  {% endif %}
+
+ <!-- VueのCDN読み込み -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </body>
 </html>
