@@ -20,6 +20,5 @@ plugins:
 # ディレクトリやファイルの除外設定（任意）
 exclude:
   - README.md
-  - test/
   - script.js
 
