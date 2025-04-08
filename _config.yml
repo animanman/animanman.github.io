@@ -1,7 +1,7 @@
 title: あにまん検索【非公式】
 description: 素人の作ったクソ雑魚低性能なあにまん掲示板専用の検索ツールの関連サイトです。あにまん掲示板の管理人ちゃんとは一切関係ありません。
 baseurl: ""
-url: "https://animanman.github.io/" # 自分のGitHub PagesのURL
+url: "https://animanman.github.io" # 自分のGitHub PagesのURL
 
 theme: minima # 使用するテーマ（GitHub Pages対応テーマ）
 markdown: kramdown
