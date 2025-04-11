@@ -4,7 +4,7 @@
   </h1>
   <nav class="nav" id="navapp">
     <ul class="nav-list">
-      <!-- navLinks配列をループしてli要素を生成 -->
+      <!-- navLinks配列をループしてli要素を動的生成 -->
       <li v-for="(link, index) in navLinks" :key="index">
         <a :href="link.url">{{ link.text }}</a>
       </li>
