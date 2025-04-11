@@ -1,4 +1,6 @@
 const headerapp = Vue.createApp({
+  // Jekyllとの記法競合回避のためのデリミタ変更
+      delimiters: ['[[', ']]'],
   data() {
     return {
       // 例：ヘッダー用のデータ
@@ -15,6 +17,8 @@ const headerapp = Vue.createApp({
 headerapp.mount('#headerapp');
 
 const footerapp = Vue.createApp({
+  // Jekyllとの記法競合回避のためのデリミタ変更
+      delimiters: ['[[', ']]'],
   data() {
     return {
       // 例：フッター用のデータ
