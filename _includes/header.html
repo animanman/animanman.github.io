@@ -2,4 +2,12 @@
   <h1 id="logo">
     <a href="https://animanman.github.io/" class="site_top"><div class="svg-container"><svg id="logo_img" title="あにまん検索【非公式】"><use xlink:href="https://animanman.github.io/commons/rogo.svg#animanman"></use></svg></div><span class="title_span">あにまん検索<span class="little">【非公式】</span></span></a>
   </h1>
+  <nav class="nav">
+    <ul class="nav-list">
+      <!-- navLinks配列をループしてli要素を生成 -->
+      <li v-for="(link, index) in navLinks" :key="index">
+        <a :href="link.url">{{ link.text }}</a>
+      </li>
+    </ul>
+  </nav>
 </header>
