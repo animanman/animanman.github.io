@@ -6,7 +6,7 @@
     <ul class="nav-list">
       <!-- navLinks配列をループしてli要素を動的生成 -->
       <li v-for="(link, index) in navLinks" :key="index">
-        <a :href="link.url">{{ link.text }}</a>
+        <a :href="link.url">[[ link.text ]]</a>
       </li>
     </ul>
   </nav>
