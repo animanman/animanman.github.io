@@ -1,4 +1,5 @@
 Vue.createApp({
+  delimiters: ['[[', ']]'],
   data() {
     return {
       navLinks: [
