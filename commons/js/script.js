@@ -18,4 +18,4 @@ Vue.createApp({
           ]
         }
       }
-    }).mount('templateapp')
+    }).mount('#templateapp')
