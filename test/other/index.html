@@ -8,8 +8,16 @@ custom_script: "/test/other/script.js"
 ---
 
 <h2>その他機能など</h2>
-<div>
-  <h3>tampermonkey用スクリプト</h3>
-  <h4><a href="https://animanman.github.io/test/other/anm-Draftsavingtool.js">下書き保存ツール</a></h4>
-  <p>下書き保存を保存したり、書き込む時に安価先のレスを書き込みフォームの上に表示したりします</p>
-</div>
+<div id="otherapp">
+    <!-- 各グループ（セクション）ごとにループ -->
+    <div v-for="(group, gindex) in scriptGroups" :key="gindex" class="section">
+      <h3>{{ group.heading }}</h3>
+      <!-- セクション内のスクリプト情報をループ -->
+      <div v-for="(script, sindex) in group.scripts" :key="sindex">
+        <h4>
+          <a :href="script.url">{{ script.title }}</a>
+        </h4>
+        <p>{{ script.description }}</p>
+      </div>
+    </div>
+  </div>
