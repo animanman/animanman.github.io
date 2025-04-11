@@ -15,7 +15,7 @@ custom_script: "/test/other/script.js"
       <!-- セクション内のスクリプト情報をループ -->
       <div v-for="(script, sindex) in group.scripts" :key="sindex">
         <h4>
-          <a :href="script.url">{{ script.title }}</a>
+          <a :href="script.url">[[ script.title ]]</a>
         </h4>
         <p>[[ script.description ]]</p>
       </div>
