@@ -39,7 +39,10 @@
     {{ content }}
   </main>
   {% include footer.html %}
-  
+
+ <!-- VueのCDN読み込み -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
   <!-- 共通JavaScriptファイル -->
   <script src="/commons/js/script.js"></script>
   
@@ -47,8 +50,5 @@
   {% if page.custom_script %}
     <script src="{{ page.custom_script }}"></script>
   {% endif %}
-
- <!-- VueのCDN読み込み -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </body>
 </html>
