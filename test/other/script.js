@@ -1,4 +1,6 @@
 Vue.createApp({
+      // Jekyllとの記法競合回避のためのデリミタ変更
+      delimiters: ['[[', ']]'],
       data() {
         return {
           // 各セクションごとに、headingとその中のスクリプト情報を格納
