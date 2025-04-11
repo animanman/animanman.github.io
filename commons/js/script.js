@@ -9,4 +9,4 @@ Vue.createApp({
       ]
     }
   }
-}).mount('#app')
+}).mount('#navapp')
