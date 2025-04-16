@@ -25,6 +25,7 @@
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
+  font-size: 14px;
   color: #000;
   position: relative;
   height: auto;
@@ -90,6 +91,10 @@
 
   &:where(main){
     flex-direction: column;
+  }
+
+  & .little{
+    font-size: 10px;
   }
 }
 
