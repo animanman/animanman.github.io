@@ -225,7 +225,7 @@
   }
   
   &:where(:visited){
-  color:var();
+  color:var(--cl2);
   }
 }
 
