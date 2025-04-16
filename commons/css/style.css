@@ -70,11 +70,12 @@
     &:where(footer){
       position: sticky;
       top: 100vh;
+      justify-content: safe center;
     }
   }
 
   &:where(main){
-    
+    flex-direction: column;
   }
 }
 
