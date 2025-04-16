@@ -295,7 +295,7 @@
 
     &:where(header){
 
-       background: linear-gradient(var(--c0) 10%,var(--c1),var(--cl1-2-1),var(--cl1-2-2),var(--cl1-2-3),var(--cl1-2-4));
+       background: linear-gradient(var(--c0) 50%,var(--c1) 60%,var(--cl1-2-1) 70%,var(--cl1-2-2) 80%,var(--cl1-2-3) 90%,var(--cl1-2-4) 100%);
 
       & :where(h1){
         flex: 1;
