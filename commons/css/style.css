@@ -312,6 +312,9 @@
     color:#fff;
     background-color: var(--c0);
 
+    justify-content: safe center;
+    align-items: safe center;
+
     & :where(a){
       color:inherit;
     }
