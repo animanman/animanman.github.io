@@ -372,7 +372,8 @@
     flex: 1;
     flex-direction: column;
 
-    padding:50px 5px;
+    padding:5px;
+    magin-top:50px;
     font-size: 1.6rem;
     line-height: 1.5;
 
@@ -381,7 +382,7 @@
     }
   }
 
-  & :where(#hd-wpp,#ft-wpp){
+  & :where(#hd-wpp,#ft-wpp,#in-wpp){
     display: flex;
     flex-wrap: wrap;
     padding:5px;
