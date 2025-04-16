@@ -11,6 +11,7 @@
   box-sizing: border-box;
   background-clip: padding-box;
   appearance: none;
+  list-style: none
 }
 
 :where(body) {
