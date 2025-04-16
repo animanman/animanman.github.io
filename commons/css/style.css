@@ -76,6 +76,7 @@
   flex-wrap: wrap;
 
   &:where(header,footer){
+    font-size: 1.4rem;
 
     &:where(header){
 
