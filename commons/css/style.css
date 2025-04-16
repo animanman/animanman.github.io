@@ -75,8 +75,8 @@
     &:where(header){
 
       & :where(h1){
-        font-family: "Kaisei Decol", serif;
-        font-weight: 700;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-weight: 800;
         font-style: normal;
       }
     }
