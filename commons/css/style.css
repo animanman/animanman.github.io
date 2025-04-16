@@ -334,6 +334,7 @@
       position: sticky;
       top: 100vh;
       justify-content: safe center;
+      align-items: safe center;
     }
   }
 
