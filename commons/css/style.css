@@ -28,11 +28,12 @@
   position: relative;
   height: auto;
   min-height:100vh;
-  overflow:auto;
+  overflow-x: hidden;
   overflow-wrap:break-word;
   display:flex;
   flex-wrap: wrap;
   flex-direction: column;
+  line-height: 1;
 }
 
 :where(p,h0, h1, h2, h3, h4, h5, h6,h7,h8,h9) {
@@ -60,3 +61,13 @@
   display:flex;
   flex-wrap: wrap;
 }
+
+@media screen and (min-width: 721px){
+
+  
+}
+@media screen and (max-width: 720px){
+
+  
+}
+
