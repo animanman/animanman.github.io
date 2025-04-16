@@ -60,6 +60,11 @@
 :where(body) > :where(header,main,footer){
   display:flex;
   flex-wrap: wrap;
+
+  &:where(footer){
+    position: sticky;
+    top: 100vh;
+  }
 }
 
 @media screen and (min-width: 721px){
