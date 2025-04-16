@@ -307,15 +307,15 @@
   display:flex;
   flex-wrap: wrap;
 
+  justify-content: safe center;
+  align-items: safe center;
+
   &:where(header,footer){
     font-size: 1.4rem;
     color:#fff;
     background-color: var(--c0);
     width:100%;
     height:50px;
-
-    justify-content: safe center;
-    align-items: safe center;
 
     & :where(a){
       color:inherit;
