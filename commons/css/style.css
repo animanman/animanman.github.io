@@ -328,7 +328,7 @@
         font-weight: 800;
         font-style: normal;
 
-        & a{
+        & :where(a){
           display: flex;
         }
 
@@ -337,6 +337,17 @@
         }
         & :where(img#logo_img){
           filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(292deg) brightness(105%) contrast(104%);
+        }
+      }
+
+      & :where(nav){
+        
+        & :where(ul){
+          display: flex;
+
+          & :where(li){
+            
+          }
         }
       }
     }
