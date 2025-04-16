@@ -16,7 +16,9 @@
 
 /* ★基本設定 */
 :root {
-  --c1:#104cd0;
+  --c0:#104cd0;
+  --c1:#1c78e9;
+  --c2:#0d6efd;
   
   --cl1:#1c78e9; /* cl1-1-rt */
   --cl2:#824AB1;
@@ -289,11 +291,11 @@
   &:where(header,footer){
     font-size: 1.4rem;
     color:#fff;
-    background-color: var(--c1);
+    background-color: var(--c0);
 
     &:where(header){
 
-       background: linear-gradient(var(--cl1-2-4), var(--c1));
+       background: linear-gradient(var(--c0),var(--c1),var(--cl1-2-1),var(--cl1-2-2),var(--cl1-2-3),var(--cl1-2-4));
 
       & :where(h1){
         flex: 1;
