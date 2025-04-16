@@ -382,6 +382,7 @@
     display: flex;
     flex-wrap: wrap;
     padding:5px;
+    width:100%;
     max-width: 1200px;
     justify-content: safe center;
     align-items: safe center;
