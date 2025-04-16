@@ -187,6 +187,9 @@
   --cl8-1-8: #1f5f6b;
   --cl8-1-9: #1e4f5b;
   --cl8-1-b: #0f343d;
+
+  --mg1:0 auto;
+  --mg2:auto 0;
 } 
 
 :where(html) {
