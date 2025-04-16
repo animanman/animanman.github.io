@@ -375,6 +375,10 @@
     }
   }
 
+  & :where(#hd-wpp,#ft-wpp){
+      max-width: 1200px;
+    }
+
   & :where(.little){
     font-size: 0.5em;
   }
