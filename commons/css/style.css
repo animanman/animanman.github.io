@@ -288,12 +288,12 @@
   }
 }
 
-.svg-container{
+:where(.svg-container){
   display:inline-block;
   position: relative;
   width: 20%;
   
-  & svg {
+  & :where(svg) {
     position: absolute;
     top: 0;
     left: 0;
@@ -312,7 +312,7 @@
     color:#fff;
     background-color: var(--c0);
 
-    & a{
+    & &:where(a){
       color:inherit;
     }
 
@@ -326,10 +326,10 @@
         font-weight: 800;
         font-style: normal;
 
-        & svg#logo_img{
+        & :where(svg#logo_img){
           fill: var(--fc9);
         }
-        & img#logo_img{
+        & :where(img#logo_img){
           filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(292deg) brightness(105%) contrast(104%);
         }
       }
@@ -354,7 +354,7 @@
     line-height: 1.5;
   }
 
-  & .little{
+  & :where(.little){
     font-size: 0.5em;
   }
 }
