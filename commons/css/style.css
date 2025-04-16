@@ -306,7 +306,6 @@
 :where(body) > :where(header,main,footer){
   display:flex;
   flex-wrap: wrap;
-  padding: 5px;
 
   &:where(header,footer){
     font-size: 1.4rem;
@@ -376,7 +375,10 @@
   }
 
   & :where(#hd-wpp,#ft-wpp){
-      max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    padding:5px;
+    max-width: 1200px;
     }
 
   & :where(.little){
