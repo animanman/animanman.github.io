@@ -36,7 +36,17 @@
 <body>
   {% include header.html %}
   <main>
+    <div id="in-wpp">
+      {% if page.title %}
+      <h2 id="p-title">{{ page.title | escape }}</h2>
+      {% endif %}
+
+      {% if page.description %}
+      <p id="p-desc">{{ page.description | escape }}</p>
+      {% endif %}
+      
     {{ content }}
+    </div>
   </main>
   {% include footer.html %}
 
