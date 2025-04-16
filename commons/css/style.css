@@ -14,6 +14,11 @@
   list-style: none;
 }
 
+:where(html) {
+  font-size: 10px;
+  position: relative;
+}
+
 :where(body) {
   font-family:"Noto Sans JP",
               "Helvetica Neue",
@@ -25,9 +30,8 @@
   font-optical-sizing: auto;
   font-weight: normal;
   font-style: normal;
-  font-size: 14px;
+  font-size: 1rem;
   color: #000;
-  position: relative;
   height: auto;
   min-height:100vh;
   overflow-x: hidden;
@@ -95,7 +99,7 @@
   }
 
   & .little{
-    font-size: 10px;
+    font-size: 1.2rem;
   }
 }
 
