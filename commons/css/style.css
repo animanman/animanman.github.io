@@ -293,6 +293,8 @@
 
     &:where(header){
 
+       background: linear-gradient(var(--cl1-2-4), var(--c1));
+
       & :where(h1){
         flex: 1;
         font-family: "M PLUS Rounded 1c", sans-serif;
