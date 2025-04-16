@@ -354,6 +354,8 @@
     &:where(footer){
       height: 50px;
       text-align: center;
+
+      background: linear-gradient(var(--cl1-2-4) 0%,var(--cl1-2-3) 10%,var(--cl1-2-2) 20%,var(--cl1-2-1) 30%,var(--c1) 40%,var(--c0) 50%);
       
       position: sticky;
       top: 100vh;
