@@ -16,16 +16,21 @@
 
 /* ★基本設定 */
 :root {
-  --cl1-1-rt:#1c78e9; /* cl1-1-rt */
-  --cl2-1-rt:#824AB1;
-  --cl3-1-rt:#E81C78;
-  --cl4-1-rt:#E8544A;
-  --cl5-1-rt:#E88C1C; /* cl1-1-rtの補色 */
-  --cl6-1-rt:#82BA54;
-  --cl7-1-rt:#1CE88C; /* cl3-1-rtの補色 */
-  --cl8-1-rt:#1CB0BB;
-  
-  --cl1-1-rt: #1c78e9;
+  --cl1:#1c78e9; /* cl1-1-rt */
+  --cl2:#824AB1;
+  --cl3:#E81C78;
+  --cl4:#E8544A;
+  --cl5:#E88C1C; /* cl1-1-rtの補色 */
+  --cl6:#82BA54;
+  --cl7:#1CE88C; /* cl3-1-rtの補色 */
+  --cl8:#1CB0BB;
+
+  /* Ocean Breeze Symphony */
+  --cl1-2-0: #1c78e9;
+  --cl1-2-1: #4bb4f1;
+  --cl1-2-2: #77d4f3;
+  --cl1-2-3: #9ee5f0;
+  --cl1-2-4: #e0f7fa;
 
   /* Generic Gradient */
   --cl1-3-0: #1c78e9; /* cl1-1-rt */
@@ -95,7 +100,7 @@
   --cl4-1-7: #b32b22;
   --cl4-1-8: #942720;
   --cl4-1-9: #7b2721;
-  --cl4-1-b: '#430f0c;
+  --cl4-1-b: #430f0c;
 
   --cl5-1-rt:#E88C1C;
 
