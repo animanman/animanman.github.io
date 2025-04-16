@@ -302,6 +302,8 @@
     }
     
     &:where(footer){
+      height: 50px;
+      
       position: sticky;
       top: 100vh;
       justify-content: safe center;
