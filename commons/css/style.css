@@ -325,6 +325,7 @@
     
     &:where(footer){
       height: 50px;
+      text-align: center;
       
       position: sticky;
       top: 100vh;
