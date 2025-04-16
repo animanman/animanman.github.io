@@ -312,7 +312,7 @@
     color:#fff;
     background-color: var(--c0);
 
-    & &:where(a){
+    & :where(a){
       color:inherit;
     }
 
