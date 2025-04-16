@@ -286,6 +286,8 @@
 
   &:where(header,footer){
     font-size: 1.4rem;
+    
+    background-color: var(--cl1);
 
     &:where(header){
 
