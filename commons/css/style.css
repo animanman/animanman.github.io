@@ -24,7 +24,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: var(--fc10);
+  color: #000;
   position: relative;
   height: auto;
   min-height:100vh;
