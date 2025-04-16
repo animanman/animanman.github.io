@@ -291,6 +291,7 @@
 .svg-container{
   display:inline-block;
   position: relative;
+  width: 20%;
   
   & svg {
     position: absolute;
