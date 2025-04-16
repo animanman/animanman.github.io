@@ -22,7 +22,7 @@
               Meiryo,
               sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: normal;
   font-style: normal;
   color: #000;
   position: relative;
@@ -37,6 +37,10 @@
 
 :where(p,h0, h1, h2, h3, h4, h5, h6,h7,h8,h9) {
   overflow-wrap: break-word;
+}
+
+:where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
+  font-weight: bold;
 }
 
 .svg-container{
