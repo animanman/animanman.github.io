@@ -14,6 +14,27 @@
   list-style: none;
 }
 
+/* ★基本設定 */
+:root {
+  --cl1-1-r: #1c78e9;
+  --cl1-2-r: #3ba2e3;
+  --cl1-3-r: #6dc6e9;
+  --cl1-4-r: #8ce5f3;
+  --cl1-5-r: #c5f7f6;
+
+  --cl1-1-50: #eff8ff;
+  --cl1-1-100: #dbeffe;
+  --cl1-1-200: #bfe4fe;
+  --cl1-1-300: #94d3fc;
+  --cl1-1-400: #61baf9;
+  --cl1-1-500: #3c9bf5;
+  --cl1-1-600: #1c78e9;
+  --cl1-1-700: #1e67d7;
+  --cl1-1-800: #1f53ae;
+  --cl1-1-900: #1f4889;
+  --cl1-1-950: #172d54;
+} 
+
 :where(html) {
   font-size: 10px;
   position: relative;
