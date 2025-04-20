@@ -24,7 +24,7 @@
 </button>
     
   <nav class="nav" :class="{ open: navOpen }">
-      <ul class="nav-list">
+      <ul ref="navList" class="nav-list">
         <li v-for="(link, index) in headerLinks" :key="'header-' + index">
           <a :href="link.url">[[ link.text ]]</a>
         </li>
