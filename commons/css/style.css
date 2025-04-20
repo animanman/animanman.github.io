@@ -433,7 +433,7 @@
         &:where(header) {
 
           & #hd-wpp > *{
-            align-self: stretch;
+            flex-basis: 100%;
           }
             & :where(nav) {
               
