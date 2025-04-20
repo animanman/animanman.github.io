@@ -317,8 +317,13 @@
     width:100%;
     max-width: 1200px;
     justify-content: safe center;
-    align-items: safe center;
+    align-items:stretch;
+
+    & > *{
+      display: flex;
+      align-items: safe center;
     }
+  }
 
   &:where(header,footer){
     font-size: 1.4rem;
