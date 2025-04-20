@@ -573,11 +573,17 @@
               cursor: pointer;
               
               & :where(ul){
+                display:none;
+                
                 flex-basis: 100%;
                 flex-direction: column;
                 
                 justify-content: safe center;
                 align-items: safe center;
+              }
+
+              &.open :where(ul){
+                display:flex;
               }
             }
         }
