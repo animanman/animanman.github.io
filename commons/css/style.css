@@ -310,6 +310,16 @@
 
   align-items: safe center;
 
+  & :where(#hd-wpp,#ft-wpp,#in-wpp){
+    display: flex;
+    flex-wrap: wrap;
+    padding:5px;
+    width:100%;
+    max-width: 1200px;
+    justify-content: safe center;
+    align-items: safe center;
+    }
+
   &:where(header,footer){
     font-size: 1.4rem;
     color:#fff;
@@ -406,16 +416,6 @@
       background-color: #fff;
     }
   }
-
-  & :where(#hd-wpp,#ft-wpp,#in-wpp){
-    display: flex;
-    flex-wrap: wrap;
-    padding:5px;
-    width:100%;
-    max-width: 1200px;
-    justify-content: safe center;
-    align-items: safe center;
-    }
 
   & :where(.little){
     font-size: 0.5em;
