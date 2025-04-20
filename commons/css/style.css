@@ -456,6 +456,9 @@
 
               & :where(ul){
                 flex-direction: column;
+                
+                justify-content: safe center;
+                align-items: safe center;
               }
             }
         }
