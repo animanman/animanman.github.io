@@ -580,6 +580,10 @@
               
               & :where(ul.nav-list){
                 height:0;
+
+                & *{
+                  height:0;
+                }
                 
                 flex-basis: 100%;
                 flex-direction: column;
@@ -590,6 +594,10 @@
 
               &.open :where(ul.nav-list){
                 height:auto;
+
+                & *{
+                  height:auto;
+                }
               }
             }
           &:has(.open){
