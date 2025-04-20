@@ -15,6 +15,13 @@ const headerapp = Vue.createApp({
   methods: {
     toggleNav() {
       this.navOpen = !this.navOpen
+
+      this.$nextTick(() => {
+        const ul = this.$refs.navList;
+        ul.style.maxHeight = this.navOpen
+          ? ul.scrollHeight + 'px'
+          : '0';
+      });
     }
   }
 })
