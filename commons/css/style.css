@@ -454,6 +454,10 @@
           }
             & :where(nav) {
 
+              &::before {
+                content: "\00bb";
+              }
+
               & :where(ul){
                 flex-direction: column;
                 
