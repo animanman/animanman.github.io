@@ -591,6 +591,9 @@
                 display:flex;
               }
             }
+          &:has(.open){
+            background: linear-gradient(rgba(16,76,208,1) 20%,rgba(28,120,233,0.5),rgba(75,180,241,0.5),var(--cl1-2-2));
+          }
         }
     }
 }
