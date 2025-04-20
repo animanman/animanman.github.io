@@ -427,7 +427,20 @@
   
 }
 @media screen and (max-width: 720px){
+  
+:where(body) > :where(header, main, footer) {
+    &:where(header, footer) {
+        &:where(header) {
 
+          & > *{
+            align-self: stretch;
+          }
+            & :where(nav) {
+              
+            }
+        }
+    }
+}
   
 }
 
