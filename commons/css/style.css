@@ -499,6 +499,10 @@
           & #hd-wpp > *{
             
           }
+
+          & :where(button#navbtn){
+            display:none;
+          }
             & :where(nav) {
 
               & :where(ul){
