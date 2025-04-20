@@ -575,7 +575,7 @@
                 content: "\00bb";
                 font-size: 2rem;
               }
-              &:active{
+              &:active::before{
                   background:#fff;
                 }
 
