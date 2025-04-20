@@ -358,6 +358,7 @@
 
         & > :where(a){
           display: flex;
+          width: 100%;
 
           & :where(.svg-container){
             width: 20%;
