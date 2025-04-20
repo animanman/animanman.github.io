@@ -594,6 +594,7 @@
 
               &.open :where(ul.nav-list){
                 display: flex;
+                flex-direction: column;
 
                 & :where(li){
                   flex-basis: 100%;
