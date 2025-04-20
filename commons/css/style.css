@@ -392,6 +392,7 @@
           align-items:stretch;
 
           & :where(li){
+            display: flex;
             align-items: safe center;
           }
         }
