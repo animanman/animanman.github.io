@@ -437,7 +437,10 @@
             flex-basis: 100%;
           }
             & :where(nav) {
-              flex-direction: column;
+
+              & :where(ul){
+                flex-direction: column;
+              }
             }
         }
     }
