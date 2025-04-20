@@ -572,7 +572,7 @@
               display: contents;
               cursor: pointer;
               
-              & :where(ul){
+              & :where(ul.nav-list){
                 display:none;
                 
                 flex-basis: 100%;
@@ -582,7 +582,7 @@
                 align-items: safe center;
               }
 
-              &.open :where(ul){
+              &.open :where(ul.nav-list){
                 display:flex;
               }
             }
