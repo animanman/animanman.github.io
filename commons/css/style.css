@@ -537,6 +537,10 @@ nav.open .nav-list {
         }
     }
 }
+    nav .nav-list {
+    max-height: none !important;
+    transition: none !important;
+  }
   
 }
 @media screen and (max-width: 720px){
@@ -665,11 +669,6 @@ nav.open .nav-list {
 .cross2 {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
-
-  nav .nav-list {
-    max-height: none !important;
-    transition: none !important;
-  }
   
 }
 
