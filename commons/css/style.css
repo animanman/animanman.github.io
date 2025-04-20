@@ -340,6 +340,7 @@
 
       & :where(#hd-wpp){
         padding:10px;
+        gap:5px;
       }
 
       & :where(h1){
