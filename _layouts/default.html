@@ -33,7 +33,7 @@
   <!-- jQuery のCDN読み込み -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
-<body>
+<body ontouchstart="">
   {% include header.html %}
   <main>
     <div id="in-wpp">
@@ -44,8 +44,10 @@
       {% if page.description %}
       <p id="p-desc">{{ page.description | escape }}</p>
       {% endif %}
-      
-    {{ content }}
+
+      <div id="content">
+        {{ content }}
+      </div>
     </div>
   </main>
   {% include footer.html %}
