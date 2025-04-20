@@ -1,20 +1,25 @@
 const headerapp = Vue.createApp({
-  // Jekyllとの記法競合回避のためのデリミタ変更
-      delimiters: ['[[', ']]'],
+  delimiters: ['[[', ']]'],
   data() {
     return {
-      // 例：ヘッダー用のデータ
       headerLinks: [
-        { text: 'ホーム', url: '/' },
-        { text: 'About', url: '/about' },
-        { text: 'テスト版', url: '/test' },
-        { text: 'その他', url: '/test/other' },
+        { text: 'ホーム',    url: '/' },
+        { text: 'About',     url: '/about' },
+        { text: 'テスト版',  url: '/test' },
+        { text: 'その他',    url: '/test/other' },
         { text: 'お問い合わせ', url: 'https://zawazawa.jp/animamman/topic/1' }
-      ]
+      ],
+      navOpen: false   // ← ここでメニュー開閉用のフラグを持たせる
+    }
+  },
+  methods: {
+    toggleNav() {
+      this.navOpen = !this.navOpen
     }
   }
-});
-headerapp.mount('#headerapp');
+})
+headerapp.mount('#headerapp')
+
 
 const footerapp = Vue.createApp({
   // Jekyllとの記法競合回避のためのデリミタ変更
