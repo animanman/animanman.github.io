@@ -428,6 +428,10 @@
 
     & :where(#in-wpp){
       flex-direction: column;
+
+      & :where(#content){
+        flex:1;
+      }
     }
 
     & :where(section,.section){
