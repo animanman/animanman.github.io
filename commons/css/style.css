@@ -350,6 +350,7 @@
         
         & :where(ul){
           display: flex;
+          gap:5px;
 
           & :where(li){
             
