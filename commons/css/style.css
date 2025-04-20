@@ -394,6 +394,7 @@
           & :where(li){
             display: flex;
             align-items: safe center;
+            padding:3px;
           }
         }
       }
