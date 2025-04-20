@@ -453,6 +453,7 @@
             flex-basis: 100%;
           }
             & :where(nav) {
+              display: contents;
 
               &::before {
                 content: "\00bb";
