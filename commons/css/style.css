@@ -582,7 +582,7 @@
                   display: none;
               }
               
-              &:where(:hover,:active,:focus,:focus-visible){
+              &:where(:hover,:active,:focus,:focus-within,:focus-visible,:target){
                 &::before{
                   background:#fff;
                 }
