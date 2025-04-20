@@ -579,25 +579,18 @@
               cursor: pointer;
               
               & :where(ul.nav-list){
-                
 
-                & *{
-                  
-                }
+                display:none;
                 
-                flex-basis: 100%;
                 flex-direction: column;
+                flex-basis: 100%;
                 
                 justify-content: safe center;
                 align-items: safe center;
               }
 
               &.open :where(ul.nav-list){
-                
-
-                & *{
-                  
-                }
+                display: flex;
               }
             }
           &:has(.open){
