@@ -580,7 +580,7 @@
                   display: none;
               }
               
-              &:active{
+              &:where(:hover,:active){
                 &::before{
                   background:#fff;
                 }
