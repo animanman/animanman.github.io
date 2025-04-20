@@ -9,13 +9,13 @@
   @click="toggleNav"
   :aria-expanded="navOpen.toString()"
 >
+  <!-- navOpen が true ＆ i===2（中央）なら隠す -->
+  <!-- navOpen が true ＆ i===1／3 なら cross1／cross2 を付与 -->
   <span
     v-for="i in 3"
     :key="i"
     class="navbtnline"
-    <!-- navOpen==true かつ i===2（中央）なら隠す -->
     v-show="!(navOpen && i === 2)"
-    <!-- navOpen==true かつ i===1→cross1, i===3→cross2 を付与 -->
     :class="{
       cross1: navOpen && i === 1,
       cross2: navOpen && i === 3
