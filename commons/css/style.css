@@ -321,6 +321,7 @@
 
     & > *{
       display: flex;
+      justify-content: safe center;
       align-items: safe center;
     }
   }
