@@ -14,6 +14,7 @@
   background-clip: padding-box;
   appearance: none;
   list-style: none;
+  transition: all 0.3s ease;
 }
 
 /* ★基本設定 */
@@ -603,7 +604,7 @@
   display: block;
   width: 100%;
   height: 0.3rem;
-  background-color: #333;
+  background-color: #fff;
   margin: 0.4rem 0;
   transition: all 0.3s ease;
 }
