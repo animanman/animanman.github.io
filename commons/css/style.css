@@ -350,6 +350,10 @@
         & :where(img#logo_img){
           filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(292deg) brightness(105%) contrast(104%);
         }
+
+        & .title_span{
+          flex: 1;
+        }
       }
 
       & :where(nav){
