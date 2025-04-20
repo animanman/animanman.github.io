@@ -622,7 +622,6 @@ nav.open .nav-list {
                 flex-direction: column;
 
                 & :where(li){
-                  flex-basis: 100%;
                 }
               }
             }
