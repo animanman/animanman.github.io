@@ -388,8 +388,11 @@
           display: flex;
           gap:5px;
 
+          align-items:stretch;
+
           & :where(li){
-            
+            justify-content: safe center;
+            align-items: safe center;
           }
         }
       }
