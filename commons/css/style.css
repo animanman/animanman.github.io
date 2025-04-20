@@ -314,7 +314,7 @@
     color:#fff;
     background-color: var(--c0);
     width:100%;
-    height:50px;
+    min-height:50px;
 
     justify-content: safe center;
 
@@ -324,8 +324,12 @@
 
     &:where(header){
 
-       background: linear-gradient(var(--c0) 20%,var(--c1),var(--cl1-2-1),var(--cl1-2-2));
+      background: linear-gradient(var(--c0) 20%,var(--c1),var(--cl1-2-1),var(--cl1-2-2));
       position: fixed;
+
+      & :where(#hd-wpp){
+        padding:10px;
+      }
 
       & :where(h1){
         flex: 1;
