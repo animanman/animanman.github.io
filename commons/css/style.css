@@ -572,6 +572,11 @@
 
               &::before {
                 content: "\00bb";
+                font-size: 2rem;
+
+                &:active{
+                  background:#fff;
+                }
               }
 
               & :where(ul){
