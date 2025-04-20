@@ -10,7 +10,7 @@
   font-weight: inherit;
   color: inherit;
   box-sizing: border-box;
-  flex-wrap: wrap;
+  flex-wrap: inherit;
   background-clip: padding-box;
   appearance: none;
   list-style: none;
