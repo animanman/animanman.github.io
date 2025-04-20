@@ -3,14 +3,33 @@
   <h1 id="logo">
     <a href="https://animanman.github.io/" class="site_top"><div class="svg-container"><svg id="logo_img" title="あにまん検索【非公式】"><use xlink:href="https://animanman.github.io/commons/rogo.svg#animanman"></use></svg></div><span class="title_span">あにまん検索<span class="little">【非公式】</span></span></a>
   </h1>
-  
-  <nav class="nav">
-        <ul class="nav-list">
-          <li v-for="(link, index) in headerLinks" :key="'header-' + index">
-            <a :href="link.url">[[ link.text ]]</a>
-          </li>
-        </ul>
-      </nav>
+
+  <button
+  id="navbtn"
+  @click="toggleNav"
+  :aria-expanded="navOpen.toString()"
+>
+  <span
+    v-for="i in 3"
+    :key="i"
+    class="navbtnline"
+    <!-- navOpen==true かつ i===2（中央）なら隠す -->
+    v-show="!(navOpen && i === 2)"
+    <!-- navOpen==true かつ i===1→cross1, i===3→cross2 を付与 -->
+    :class="{
+      cross1: navOpen && i === 1,
+      cross2: navOpen && i === 3
+    }"
+  ></span>
+</button>
+    
+  <nav class="nav" :class="{ open: navOpen }">
+      <ul class="nav-list">
+        <li v-for="(link, index) in headerLinks" :key="'header-' + index">
+          <a :href="link.url">[[ link.text ]]</a>
+        </li>
+      </ul>
+    </nav>
     
     </div>
 </header>
