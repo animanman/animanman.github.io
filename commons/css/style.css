@@ -594,6 +594,10 @@
 
               &.open :where(ul.nav-list){
                 display: flex;
+
+                & :where(li){
+                  flex-basis: 100%;
+                }
               }
             }
           &:has(.open){
