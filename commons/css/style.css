@@ -574,11 +574,10 @@
               &::before {
                 content: "\00bb";
                 font-size: 2rem;
-
-                &:active{
+              }
+              &:active{
                   background:#fff;
                 }
-              }
 
               & :where(ul){
                 flex-basis: 100%;
