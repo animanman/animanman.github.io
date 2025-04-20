@@ -571,27 +571,7 @@
             & :where(nav) {
               display: contents;
               cursor: pointer;
-
-              &::before {
-                content: "\00bb";
-                font-size: 2rem;
-                padding:10px;
-              }
-
-              & :where(ul.nav-list){
-                  display: none;
-              }
               
-              &:where(:hover,:active,:focus,:focus-within,:focus-visible,:target){
-                &::before{
-                  background:#fff;
-                }
-                & :where(ul.nav-list){
-                  display: flex;
-                  background:#fff;
-                }
-              }
-
               & :where(ul){
                 flex-basis: 100%;
                 flex-direction: column;
