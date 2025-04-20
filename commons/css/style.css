@@ -432,7 +432,7 @@
     &:where(header, footer) {
         &:where(header) {
 
-          & > *{
+          & #hd-wpp > *{
             align-self: stretch;
           }
             & :where(nav) {
