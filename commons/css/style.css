@@ -584,6 +584,7 @@
 
                 & + :where(ul.nav-list){
                   display: flex;
+                  background:#fff;
                 }
               }
 
