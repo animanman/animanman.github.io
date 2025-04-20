@@ -450,7 +450,7 @@
         &:where(header) {
 
           & #hd-wpp > *{
-            flex-basis: 100%;
+            
           }
             & :where(nav) {
               display: contents;
@@ -460,6 +460,7 @@
               }
 
               & :where(ul){
+                flex-basis: 100%;
                 flex-direction: column;
                 
                 justify-content: safe center;
