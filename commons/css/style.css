@@ -340,7 +340,6 @@
         font-style: normal;
 
         & > :where(a){
-          flex: 1;
           display: flex;
         }
 
