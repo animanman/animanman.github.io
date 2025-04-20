@@ -347,6 +347,10 @@
       & :where(#hd-wpp){
         padding:10px;
         gap:5px;
+        
+        & > *{
+          align-items:stretch;
+        }
       }
 
       & :where(h1){
