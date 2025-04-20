@@ -10,6 +10,7 @@
   font-weight: inherit;
   color: inherit;
   box-sizing: border-box;
+  flex-wrap: wrap;
   background-clip: padding-box;
   appearance: none;
   list-style: none;
@@ -338,7 +339,8 @@
         font-weight: 800;
         font-style: normal;
 
-        & :where(a){
+        & > :where(a){
+          flex: 1;
           display: flex;
         }
 
