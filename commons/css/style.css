@@ -440,6 +440,31 @@
   }
 }
 
+/* メディアクエリ外では従来通り横並び */
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  overflow: hidden;
+  max-height: none; /* 常に fully open */
+  transition: none;
+}
+
+/* 折りたたみアニメ用の共通設定 */
+nav .nav-list {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+/* .open 時に高さを JS で設定しつつ縦並びに */
+nav.open .nav-list {
+  display: flex;               /* ここの display:none を外す */
+  flex-direction: column;      /* 縦並びに */
+  width: 100%;                 /* 必要なら */
+}
+
+
 @media screen and (min-width: 721px){
   :where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
 
@@ -642,6 +667,10 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+  nav .nav-list {
+    max-height: none !important;
+    transition: none !important;
+  }
   
 }
 
