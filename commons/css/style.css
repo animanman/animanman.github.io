@@ -374,6 +374,7 @@
 
       & :where(#ft-wpp){
         flex-direction: column;
+        gap:5px;
       }
     }
   }
