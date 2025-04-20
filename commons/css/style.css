@@ -579,7 +579,7 @@
               cursor: pointer;
               
               & :where(ul.nav-list){
-                display:none;
+                height:0;
                 
                 flex-basis: 100%;
                 flex-direction: column;
@@ -589,7 +589,7 @@
               }
 
               &.open :where(ul.nav-list){
-                display:flex;
+                height:auto;
               }
             }
           &:has(.open){
