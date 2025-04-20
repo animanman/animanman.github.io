@@ -293,7 +293,7 @@
 :where(.svg-container){
   display:inline-block;
   position: relative;
-  width: 20%;
+  width: 100%;
   
   & :where(svg) {
     position: absolute;
@@ -341,17 +341,22 @@
 
         & > :where(a){
           display: flex;
-        }
 
-        & :where(svg#logo_img){
-          fill: var(--fc9);
-        }
-        & :where(img#logo_img){
-          filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(292deg) brightness(105%) contrast(104%);
-        }
+          & :where(.svg-container){
+            width: 20%;
+            max-width: 50px;
 
-        & .title_span{
-          flex: 1;
+            & :where(svg#logo_img){
+              fill: var(--fc9);
+            }
+            & :where(img#logo_img){
+              filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(292deg) brightness(105%) contrast(104%);
+            }
+          }
+
+          & :where(.title_span){
+            flex: 1;
+          }
         }
       }
 
