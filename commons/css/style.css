@@ -425,6 +425,22 @@
 
 @media screen and (min-width: 721px){
 
+  :where(body) > :where(header, main, footer) {
+    &:where(header, footer) {
+        &:where(header) {
+
+          & #hd-wpp > *{
+            
+          }
+            & :where(nav) {
+
+              & :where(ul){
+                flex-direction: row;
+              }
+            }
+        }
+    }
+}
   
 }
 @media screen and (max-width: 720px){
