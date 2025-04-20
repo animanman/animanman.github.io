@@ -570,6 +570,7 @@
           }
             & :where(nav) {
               display: contents;
+              cursor: pointer;
 
               &::before {
                 content: "\00bb";
@@ -581,7 +582,7 @@
                   display: none;
               }
               
-              &:where(:hover,:active){
+              &:where(:hover,:active,:focus,:focus-visible){
                 &::before{
                   background:#fff;
                 }
