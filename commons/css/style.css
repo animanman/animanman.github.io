@@ -427,6 +427,7 @@
     line-height: 1.5;
 
     & :where(#in-wpp){
+      flex:1;
       flex-direction: column;
 
       & :where(#content){
