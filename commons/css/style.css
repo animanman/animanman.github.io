@@ -436,7 +436,7 @@
             flex-basis: 100%;
           }
             & :where(nav) {
-              
+              flex-direction: column;
             }
         }
     }
