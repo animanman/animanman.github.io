@@ -574,15 +574,17 @@
               &::before {
                 content: "\00bb";
                 font-size: 2rem;
-
-                & + :where(ul.nav-list){
-                  display: none;
-                }
               }
-              &:active::before{
-                  background:#fff;
 
-                & + :where(ul.nav-list){
+              & :where(ul.nav-list){
+                  display: none;
+              }
+              
+              &:active{
+                &::before{
+                  background:#fff;
+                }
+                & :where(ul.nav-list){
                   display: flex;
                   background:#fff;
                 }
