@@ -14,7 +14,7 @@
   background-clip: padding-box;
   appearance: none;
   list-style: none;
-  transition: all 0.3s ease;
+  transition: 0.3s all;
 }
 
 /* ★基本設定 */
@@ -569,6 +569,7 @@
 :where(body) > :where(header, main, footer) {
     &:where(header, footer) {
         &:where(header) {
+          max-height:600px;
 
           & #hd-wpp > *{
             
