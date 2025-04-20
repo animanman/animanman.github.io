@@ -324,7 +324,7 @@
 
     &:where(header){
 
-       background: linear-gradient(var(--c0) 50%,var(--c1) 60%,var(--cl1-2-1) 70%,var(--cl1-2-2) 80%,var(--cl1-2-3) 90%,var(--cl1-2-4) 100%);
+       background: linear-gradient(var(--c0) 20%,var(--c1),var(--cl1-2-1),var(--cl1-2-2));
       position: fixed;
 
       & :where(h1){
@@ -362,7 +362,7 @@
       height: 50px;
       text-align: center;
 
-      background: linear-gradient(var(--cl1-2-4) 0%,var(--cl1-2-3) 10%,var(--cl1-2-2) 20%,var(--cl1-2-1) 30%,var(--c1) 40%,var(--c0) 50%);
+      background: linear-gradient(var(--cl1-2-2) ,var(--cl1-2-1) ,var(--c1) ,var(--c0) 80%);
       
       position: sticky;
       top: 100vh;
