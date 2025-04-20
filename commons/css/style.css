@@ -424,6 +424,56 @@
 }
 
 @media screen and (min-width: 721px){
+  :where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
+
+    & > {
+      
+    }
+
+    &:where(h1, h2, h3){
+      
+    }
+
+    &:where(h0){
+      
+    }
+
+    &:where(h1){
+      font-size: 4rem;
+    }
+
+    &:where(h2){
+      font-size: 3rem;
+    }
+
+    &:where(h3){
+      font-size: 2.5rem;
+    }
+
+    &:where(h4){
+      font-size: 2rem;
+    }
+
+    &:where(h5){
+      
+    }
+
+    &:where(h6){
+      
+    }
+
+    &:where(h7){
+      
+    }
+
+    &:where(h8){
+      
+    }
+
+    &:where(h9){
+      
+    }
+  }
 
   :where(body) > :where(header, main, footer) {
     &:where(header, footer) {
@@ -444,6 +494,56 @@
   
 }
 @media screen and (max-width: 720px){
+  :where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
+
+    & > {
+      
+    }
+
+    &:where(h1, h2, h3){
+      
+    }
+
+    &:where(h0){
+      
+    }
+
+    &:where(h1){
+      font-size: 2rem;
+    }
+
+    &:where(h2){
+      font-size: 1.5rem;
+    }
+
+    &:where(h3){
+      font-size: 1.17rem;
+    }
+
+    &:where(h4){
+      font-size: 1.6rem;
+    }
+
+    &:where(h5){
+      
+    }
+
+    &:where(h6){
+      
+    }
+
+    &:where(h7){
+      
+    }
+
+    &:where(h8){
+      
+    }
+
+    &:where(h9){
+      
+    }
+  }
   
 :where(body) > :where(header, main, footer) {
     &:where(header, footer) {
