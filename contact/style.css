@@ -3,22 +3,39 @@ div.iframe-container:has(iframe){
   flex:1;
   width:100%;
   align-items: stretch;
+  margin-top: 0.5rem;
 }
 
-iframe{
+div.iframe-container iframe{
   width:100%;
+  border: none;
 }
 
-/* 折りたたみ見出し */
-#iframeFolding {
-  cursor: pointer;
-  background: #f5f5f5;
-  padding: 0.8rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-#iframeFolding.open {
-  background: #e0e0e0;
+#content{
+  & #iframescript{
+    
+  }
+
+  & #iframecontainer{
+    & #frameFolding{
+      cursor: pointer;
+      background: #f5f5f5;
+      padding: 0.8rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+
+      &.open {
+        background: #e0e0e0;
+      }
+
+      & .iframe-container{
+
+        & #InlineFrameContact{
+          min-height:100vh;
+        }
+      }
+    }
+  }
 }
 
 /* スライドアニメーション */
@@ -37,11 +54,3 @@ iframe{
   max-height: 1000px;
 }
 
-/* iframe コンテナ・iframe はお好みで調整 */
-.iframe-container {
-  margin-top: 0.5rem;
-}
-.iframe-container iframe {
-  width: 100%;
-  border: none;
-}
