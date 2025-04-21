@@ -622,9 +622,13 @@
                     transform: translate(-50%, -50%) rotate(-45deg);
                   }
                 }
-}
+                &:where(.notcross){
+                  width: 0%;
+                  height: 0rem;
+                }
+              }
             }
-}
+          }
           
             & :where(nav) {
               display: contents;
