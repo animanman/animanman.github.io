@@ -8,3 +8,15 @@ div.iframe-container:has(iframe){
 iframe{
   width:100%;
 }
+
+#iframeFolding {
+  cursor: pointer;
+  background: #f5f5f5;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+}
+
+/* 初期状態で非表示にしたい場合 */
+#iframecontainer .iframe-container {
+  display: none;
+}
