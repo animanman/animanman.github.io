@@ -1,19 +1,12 @@
-const postIframeHeight = () => {
-    const height = document.documentElement.offsetHeight;
-    window.parent.postMessage({ iframeHeight: height }, 'https://zawazawa.jp/animamman');
-};
+// load イベント後に呼ぶのが安全
+  window.addEventListener('load', function() {
+    iFrameResize({
+      // 高さをどの要素基準で計算するか
+      heightCalculationMethod: 'bodyOffset',
+      // origin チェックを無効に（必要に応じて設定）
+      checkOrigin: false,
+      // ログを出したいとき
+      // log: true
+    }, '#my-zawazawa');
+  });
 
-window.addEventListener('DOMContentLoaded', () => {
-    postIframeHeight();
-});
-
-window.addEventListener('resize', () => {
-    postIframeHeight();
-});
-
-window.addEventListener('message', (e) => {
-    if (e.data.hasOwnProperty('iframeHeight')) { 
-        const iframe = document.getElementById('InlineFrameContact'); // resizableIframeはiframeのID名に置き換える
-        iframe.style.height = `${e.data.iframeHeight}px`;
-    }
-});
