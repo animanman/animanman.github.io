@@ -609,7 +609,7 @@
               
                 flex-basis: 100%;
                 
-                &:where(.cross1,.cross2) {
+                &:where(.cross1,.cross2,.notcross) {
                   position: absolute;
                   top: 50%;
                   left: 50%;
