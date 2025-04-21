@@ -7,6 +7,6 @@
       checkOrigin: false,
       // ログを出したいとき
       // log: true
-    }, '#my-zawazawa');
+    }, '#InlineFrameContact');
   });
 
