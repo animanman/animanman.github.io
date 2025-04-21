@@ -43,6 +43,19 @@
       }
   }
 
+  & :is(#iframescript,#iframecontainer) .iframe-container iframe:is(#zawazawa-embed-animamman-1-e1,#InlineFrameContact) *{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    font-weight: inherit;
+    color: inherit;
+    box-sizing: border-box;
+    flex-wrap: inherit;
+    background-clip: padding-box;
+    appearance: none;
+    list-style: none;
+    transition: 0.3s all;
+  }
   
 }
 
