@@ -16,9 +16,9 @@
     v-for="i in 3"
     :key="i"
     class="navbtnline"
-    v-show="!(navOpen && i === 2)"
     :class="{
       cross1: navOpen && i === 1,
+      notcross: navOpen && i === 2,
       cross2: navOpen && i === 3
     }"
   ></span>
