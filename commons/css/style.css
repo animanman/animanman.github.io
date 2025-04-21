@@ -446,8 +446,17 @@
   }
 }
 
+.iframe-container {
+  width: 100%;
+  /* flex や height は指定せず、子 iframe の高さに追従させる */
+}
 
-
+.iframe-container iframe {
+  display: block;      /* インライン余白を消すため */
+  width: 100%;         /* 横幅は常に親にフィット */
+  border: none;        /* フレーム線が不要なら */
+  /* height は指定しない（JS が動的に style 属性で書き込む） */
+}
 
 @media screen and (min-width: 721px){
   :where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
