@@ -455,7 +455,7 @@
   display: block;      /* インライン余白を消すため */
   width: 100%;         /* 横幅は常に親にフィット */
   border: none;        /* フレーム線が不要なら */
-  /* height は指定しない（JS が動的に style 属性で書き込む） */
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 721px){
