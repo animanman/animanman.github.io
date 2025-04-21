@@ -31,7 +31,15 @@
       &.open {
         background: #e0e0e0;
       }
+      
     }
+
+    & .iframe-container{
+
+        & #InlineFrameContact{
+          min-height:100vh;
+        }
+      }
   }
 
   
