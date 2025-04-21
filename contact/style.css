@@ -1,17 +1,18 @@
-div.iframe-container:has(iframe){
-  display:flex;
-  flex:1;
-  width:100%;
-  align-items: stretch;
-  margin-top: 0.5rem;
-}
-
-div.iframe-container iframe{
-  width:100%;
-  border: none;
-}
-
 #content{
+
+  & div.iframe-container:has(iframe){
+    display:flex;
+    flex:1;
+    width:100%;
+    align-items: stretch;
+    margin-top: 0.5rem;
+  }
+  
+  & div.iframe-container iframe{
+    width:100%;
+    border: none;
+  }
+  
   & #iframescript{
     
   }
@@ -36,6 +37,8 @@ div.iframe-container iframe{
       }
     }
   }
+
+  
 }
 
 /* スライドアニメーション */
