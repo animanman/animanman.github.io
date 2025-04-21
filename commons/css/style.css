@@ -433,11 +433,13 @@
         flex: 1;
         flex-direction: column;
         justify-content: stretch;
+        gap:5px;
       }
     }
 
     & :where(section,.section){
       background-color: #fff;
+      width: 100%;
     }
   }
 
