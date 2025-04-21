@@ -429,7 +429,7 @@
       flex-direction: column;
       justify-content: stretch;
       
-      & :where(.content){
+      & :where(#content){
         flex: 1;
         flex-direction: column;
         justify-content: stretch;
