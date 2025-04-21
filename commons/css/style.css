@@ -221,6 +221,7 @@
   height: auto;
   min-height:100vh;
   overflow-x: hidden;
+  overflow-y: scroll;
   overflow-wrap:break-word;
   display:flex;
   flex-wrap: wrap;
