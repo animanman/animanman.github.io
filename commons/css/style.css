@@ -595,7 +595,6 @@
               cursor: pointer;
               gap:5px;
             
-              /*! flex-direction: column; */
               align-items: stretch;
               justify-items: safe center;
              
