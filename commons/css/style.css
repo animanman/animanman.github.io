@@ -624,6 +624,7 @@
                 }
                 &:where(.notcross){
                   width: 0%;
+                  flex-basis: 0%;
                   height: 0rem;
                 }
               }
