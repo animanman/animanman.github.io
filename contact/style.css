@@ -18,6 +18,7 @@
   }
 
   & #iframecontainer{
+    
     & #frameFolding{
       cursor: pointer;
       background: #f5f5f5;
