@@ -1,6 +1,6 @@
-window.addEventListener('load', function() {
+document.getElementById('InlineFrameContact').addEventListener('load', function() {
   iFrameResize({
-    heightCalculationMethod: 'documentElementScroll', // または 'max'
+    heightCalculationMethod: 'documentElementScroll',
     checkOrigin: false
   }, '#InlineFrameContact');
 });
