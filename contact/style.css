@@ -1,5 +1,5 @@
 #content{
-  gap: 10px 5px;;
+  gap: 20px 5px;
 
   & .iframe-container:has(iframe){
     display:flex;
