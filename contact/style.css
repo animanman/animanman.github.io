@@ -1,6 +1,6 @@
 #content{
 
-  & div.iframe-container:has(iframe){
+  & .iframe-container:has(iframe){
     display:flex;
     flex:1;
     width:100%;
@@ -30,7 +30,7 @@
         background: #e0e0e0;
       }
 
-      & .iframe-container{
+      & div.iframe-container{
 
         & #InlineFrameContact{
           min-height:100vh;
