@@ -15,18 +15,25 @@ custom_script: "/contact/script.js"
 </section>
 
 <section id="iframecontainer">
-<div id="iframeFolding">
-  <p>上の掲示板が機能しない場合はこちらからどうぞ</p>
-</div>
-<div class="iframe-container">
-<iframe
-  id="InlineFrameContact"
-  title="InlineFrameContact"
-  src="https://zawazawa.jp/animamman/topic/1"
-  target="_blank"
-  scrolling="no"
-  rel="noreferrer noopener"
+  <div
+    id="iframeFolding"
+    :class="{ open }"
+    @click="open = !open"
   >
-</iframe>
-</div>
+    <p>上の掲示板が機能しない場合はこちらからどうぞ</p>
+  </div>
+
+  <!-- Vue の Transition コンポーネントでスライド効果をつける -->
+  <transition name="slide">
+    <!-- v-show で開閉。v-if にすると要素の再生成が入ります -->
+    <div class="iframe-container" v-show="open">
+      <iframe
+        id="InlineFrameContact"
+        title="InlineFrameContact"
+        src="https://zawazawa.jp/animamman/topic/1"
+        scrolling="no"
+        sandbox="allow-scripts allow-same-origin"
+      ></iframe>
+    </div>
+  </transition>
 </section>
