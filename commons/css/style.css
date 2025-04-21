@@ -703,7 +703,7 @@
               }
             }
           &:has(.open){
-            background: linear-gradient(var(--c0) 20%,rgba(28,120,233,0.5),rgba(75,180,241,0.5),var(--cl1-2-2));
+            background: linear-gradient(var(--c0) 20%,rgba(28,120,233,0.6),rgba(75,180,241,0.6),var(--cl1-2-2));
           }
         }
     }
