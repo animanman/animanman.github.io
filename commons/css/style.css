@@ -406,7 +406,7 @@
     }
     
     &:where(footer){
-      height: 70px;
+      min-height: 50px;
       text-align: center;
 
       background: linear-gradient(var(--cl1-2-2) ,var(--cl1-2-1) ,var(--c1) ,var(--c0) 80%);
