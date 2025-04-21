@@ -601,14 +601,14 @@ nav.open .nav-list {
             display: flex;
             
             align-items: safe center;
-                      & :where(#navbtn){
+            
+            & :where(#navbtn){
               display: flex;
               
               position: relative;
               width: 2.4rem;
               height: 2.4rem;
               margin: 0 0.5rem;
-              padding: 0.5rem;
               background: transparent;
               border: none;
               cursor: pointer;
