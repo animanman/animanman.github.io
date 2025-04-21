@@ -2,20 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&display=swap');
 
-/*★リセット*/
-*,*:where(::before,::after){
-  margin:0;
-  padding:0;
-  text-decoration:none;
-  font-weight: inherit;
-  color: inherit;
-  box-sizing: border-box;
-  flex-wrap: inherit;
-  background-clip: padding-box;
-  appearance: none;
-  list-style: none;
-  transition: 0.3s all;
-}
+@layer reset, components, utilities;
 
 /* ★基本設定 */
 :root {
@@ -194,6 +181,24 @@
   --mg2:auto 0;
 } 
 
+@layer reset {
+/*★リセット*/
+*,*:where(::before,::after){
+  margin:0;
+  padding:0;
+  text-decoration:none;
+  font-weight: inherit;
+  color: inherit;
+  box-sizing: border-box;
+  flex-wrap: inherit;
+  background-clip: padding-box;
+  appearance: none;
+  list-style: none;
+  transition: 0.3s all;
+}
+}
+
+@layer components {
 :where(html) {
   font-size: 10px;
   position: relative;
@@ -449,6 +454,10 @@
     font-size: 0.5em;
   }
 }
+  
+}
+ 
+@layer utilities {
 
 .iframe-container {
   width: 100%;
@@ -460,8 +469,11 @@
   width: 100%;         /* 横幅は常に親にフィット */
   border: none;        /* フレーム線が不要なら */
 }
+  
+}
 
 @media screen and (min-width: 721px){
+  @layer components {
   :where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
 
     & > {
@@ -537,7 +549,9 @@
 }
   
 }
+}
 @media screen and (max-width: 720px){
+  @layer components {
   :where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
 
     & > {
@@ -694,6 +708,7 @@
           }
         }
     }
+}
 }
 
 
