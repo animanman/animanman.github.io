@@ -394,7 +394,6 @@
           & :where(li){
             display: flex;
             align-items: safe center;
-            padding:3px;
           }
         }
       }
@@ -439,26 +438,7 @@
   }
 }
 
-/* メディアクエリ外では従来通り横並び */
-.nav-list {
-  /*! overflow: hidden; */
-  /*! max-height: none; */ /* 常に fully open */
-  /*! transition: none; */
-}
 
-/* 折りたたみアニメ用の共通設定 */
-nav .nav-list {
-  /*! overflow: hidden; */
-  /*! max-height: 0; */
-  /*! transition: max-height 0.3s ease; */
-}
-
-/* .open 時に高さを JS で設定しつつ縦並びに */
-nav.open .nav-list {
-  /*! display: flex; */               /* ここの display:none を外す */
-  /*! flex-direction: column; */      /* 縦並びに */
-  /*! width: 100%; */                 /* 必要なら */
-}
 
 
 @media screen and (min-width: 721px){
@@ -529,6 +509,7 @@ nav.open .nav-list {
               & :where(ul){
                 flex-direction: row;
                 gap:5px;
+                padding:3px;
               }
             }
         }
@@ -601,7 +582,7 @@ nav.open .nav-list {
             display: flex;
             
             align-items: safe center;
-            
+              
             & :where(#navbtn){
               display: flex;
               
@@ -628,7 +609,8 @@ nav.open .nav-list {
                 transition: all 0.3s ease;
               
                 flex-basis: 100%;
-                              &:where(.cross1,.cross2) {
+                
+                &:where(.cross1,.cross2) {
                   position: absolute;
                   top: 50%;
                   left: 50%;
@@ -664,16 +646,26 @@ nav.open .nav-list {
                 
                 & :where(li){
                   height: 0;
+                  justify-content: safe center;
+                  align-items: safe center;
+                  /*! display: none; */
                 }
               }
 
               &.open :where(ul.nav-list){
                 display: flex;
                 gap:5px;
-                flex-direction: column;
+                /*! flex-direction: column; */
 
                 & :where(li){
-                  height: auto;
+                  width:100%;
+                  height: 30px;
+                  padding:3px;
+                  /*! display: flex; */
+                  
+                  &:where(:hover,:active){
+                    background: linear-gradient(rgba(16,76,208,0),rgba(31, 72, 137, 0.25));
+                  }
                 }
               }
             }
