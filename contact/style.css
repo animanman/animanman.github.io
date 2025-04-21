@@ -18,6 +18,8 @@
   }
 
   & #iframecontainer{
+    display: flex;
+    flex-direction: column;
     
     & #iframeFolding{
       cursor: pointer;
@@ -28,13 +30,6 @@
 
       &.open {
         background: #e0e0e0;
-      }
-
-      & div.iframe-container{
-
-        & #InlineFrameContact{
-          min-height:100vh;
-        }
       }
     }
   }
