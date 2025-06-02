@@ -15,9 +15,6 @@
 (function() {
   'use strict';
 
-  // ────────────────────────────────────────────
-  // ◆ グローバル宣言
-  // ────────────────────────────────────────────
   const STORAGE_KEY       = 'drafts';
   const MAX_DRAFTS        = 10;
   const DB_NAME           = 'DraftToolDB';
@@ -132,7 +129,6 @@
   }
 
   async function encryptTrip(plainText) {
-    // 96bit (=12バイト) の IV をランダム生成
     const iv = crypto.getRandomValues(new Uint8Array(12));
     const enc = new TextEncoder();
     const cipherData = await crypto.subtle.encrypt(
@@ -502,7 +498,6 @@ window.hitoricapJS = async function(rawTripkey) {
 };
 
   const createModal = () => {
-    // すでに表示中なら何もしない
     if (document.getElementById('outdraftModal')) return;
 
     const outmodal = document.createElement('div');
