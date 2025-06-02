@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const footerElement = document.querySelector('footer');
 
     mainElement?.insertAdjacentHTML('afterbegin', '<div class="testpage_yome"><p>このページはあにまん検索【非公式】のテストページです。機能しない機能が沢山あります。<br />正規版は<a href="https://animanman.github.io/">こちら</a>からどうぞ</p></div>');
-    footerDiv?.insertAdjacentHTML('beforeend', '<p><a href="https://github.com/animanman/animanman.github.io/tree/main/test">github(test)</a></p>');
+    footerDiv?.insertAdjacentHTML('beforeend', '<p><a href="https://github.com/animanman/animanman.github.io/tree/main/test">github(test)</a></p><p><a href="/other/">その他</a></p>');
 
 footerElement?.insertAdjacentHTML('afterend', `
 <style>
