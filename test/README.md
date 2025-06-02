@@ -5,6 +5,7 @@
 正規版のソースは[こちら](https://github.com/animanman/animanman.github.io/)
 
 [連絡先](https://zawazawa.jp/animamman/topic/1)
+[更新情報](https://zawazawa.jp/animamman/topic/2)
 
 ## 機能実装
 - <ins>**2025/1/22**</ins>\
