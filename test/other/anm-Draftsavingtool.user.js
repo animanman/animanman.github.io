@@ -3,7 +3,7 @@
 // @namespace    https://animanman.github.io/test/other/
 // @version      1.4
 // @description  機能も表示もモリモリにしました
-// @author       You
+// @author       animanman
 // @match        https://bbs.animanch.com/*
 // @grant        none
 // @downloadURL  https://animanman.github.io/test/other/anm-Draftsavingtool.js
