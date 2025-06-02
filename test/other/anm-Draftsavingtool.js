@@ -686,7 +686,7 @@ const renderList = () => {
           spanCategoryLink.className = "df-category";
 
           const a = document.createElement("a");
-          a.href = `https://bbs.animanch.com/category/${catIdStr}/`;
+          a.href = `https://bbs.animanch.com/category${catIdStr}/`;
           a.textContent = match.label;
           spanCategoryLink.appendChild(a);
           breadcrumb.appendChild(spanCategoryLink);
