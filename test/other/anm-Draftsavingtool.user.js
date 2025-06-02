@@ -7,7 +7,7 @@
 // @match        https://bbs.animanch.com/*
 // @grant        none
 // @downloadURL  https://animanman.github.io/test/other/anm-Draftsavingtool.js
-// @updateURL    https://animanman.github.io/test/other/anm-Draftsavingtool.user.js
+// @updateURL    https://animanman.github.io/test/other/anm-Draftsavingtool.js
 // ==/UserScript==
 
 /* スクリプト本体は downloadURL で読み込まれる */
