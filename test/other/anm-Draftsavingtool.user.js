@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         あにまん掲示板下書き保存機能拡張
 // @namespace    https://animanman.github.io/test/other/
-// @version      1.4
-// @description  機能も表示もモリモリにしました
+// @version      0
+// @description  下書き保存機能のダウンロード用スクリプトです
 // @author       animanman
 // @match        https://bbs.animanch.com/*
 // @grant        none
