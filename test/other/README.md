@@ -1,4 +1,5 @@
-その他ツールのりどみ置き場
+その他ツールのりどみ置き場\
+[サイト](https://animanman.github.io/test/other/)
 
 .user.jsをつけているとtampermonkeyが自動で開いてくれるようなので、\
 ダウンロード先とアップデート確認先のURL情報だけ乗せた\
