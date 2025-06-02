@@ -2,7 +2,7 @@
 // @name         あにまん掲示板下書き保存機能拡張
 // @namespace    https://animanman.github.io/test/other/
 // @version      1.4
-// @description  トリップを平文で保存するよりマシにしました(非推奨)
+// @description  機能も表示もモリモリにしました
 // @author       You
 // @match        https://bbs.animanch.com/*
 // @grant        none
