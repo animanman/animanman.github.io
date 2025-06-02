@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         下書き保存機能
+// @name         あにまん掲示板下書き保存機能拡張
 // @namespace    https://animanman.github.io/test/other/
 // @version      1.4
-// @description  Save drafts with AES-GCM encrypted trip (key stored in IndexedDB), show warning if name contains “#”, and enhance response popups.
+// @description  トリップを平文で保存するよりマシにしました(非推奨)
 // @author       You
 // @match        https://bbs.animanch.com/*
 // @grant        none
