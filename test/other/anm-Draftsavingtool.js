@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         下書き保存機能（AES‐GCM 永続化版＋トリップ暗号化・IndexedDBキー保持）
+// @name         下書き保存機能
 // @namespace    https://animanman.github.io/test/other/
-// @version      2025-05-XX
+// @version      1.4
 // @description  Save drafts with AES-GCM encrypted trip (key stored in IndexedDB), show warning if name contains “#”, and enhance response popups.
 // @author       You
 // @match        https://bbs.animanch.com/*
