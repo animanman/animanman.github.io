@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         下書き保存機能(中継)
-// @namespace    https://animanman.github.io/
-// @version      
-// @description  自動で下書きを保存するスクリプト(中継)
-// @author       animanman
-// @match        
+// @name         あにまん掲示板下書き保存機能拡張
+// @namespace    https://animanman.github.io/test/other/
+// @version      1.4
+// @description  機能も表示もモリモリにしました
+// @author       You
+// @match        https://bbs.animanch.com/*
 // @grant        none
 // @downloadURL  https://animanman.github.io/test/other/anm-Draftsavingtool.js
 // @updateURL    https://animanman.github.io/test/other/anm-Draftsavingtool.user.js
