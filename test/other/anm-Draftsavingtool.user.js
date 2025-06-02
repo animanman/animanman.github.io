@@ -10,5 +10,5 @@
 // @updateURL    https://animanman.github.io/test/other/anm-Draftsavingtool.js
 // ==/UserScript==
 
-/* スクリプト本体は @downloadURL で読み込まれます */
+/* スクリプト本体は後から @downloadURL で読み込まれます */
 /* 上手くいかない場合は導入後にtampermonkeyの方でアップデートをかけてあげてください */
