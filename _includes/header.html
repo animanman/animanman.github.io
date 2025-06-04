@@ -1,50 +1,37 @@
-<!-- _includes/header.html -->
 <header id="headerapp">
   <div id="hd-wpp">
-    <h1 id="logo">
-      <a href="{{ "/" | relative_url }}" class="site_top">
-        <div class="svg-container">
-          <svg id="logo_img" title="あにまん検索【非公式】">
-            <use xlink:href="https://animanman.github.io/commons/rogo.svg#animanman"></use>
-          </svg>
-        </div>
-        <span class="title_span">
-          あにまん検索
-          <span class="little">【非公式】</span>
-        </span>
-      </a>
-    </h1>
+  <h1 id="logo">
+    <a href="https://animanman.github.io/" class="site_top"><div class="svg-container"><svg id="logo_img" title="あにまん検索【非公式】"><use xlink:href="https://animanman.github.io/commons/rogo.svg#animanman"></use></svg></div><span class="title_span">あにまん検索<span class="little">【非公式】</span></span></a>
+  </h1>
 
-    <!-- ハンバーガーメニュー（Vue で制御） -->
-    <div class="navbtn-div">
-      <button
-        id="navbtn"
-        @click="toggleNav"
-        :aria-expanded="navOpen.toString()"
-      >
-        <span
-          v-for="i in 3"
-          :key="i"
-          class="navbtnline"
-          :class="{
-            cross1: navOpen && i === 1,
-            notcross: navOpen && i === 2,
-            cross2: navOpen && i === 3
-          }"
-        ></span>
-      </button>
-    </div>
-
-    <!-- 実際のナビリンク -->
-    <nav class="nav" :class="{ open: navOpen }">
+  <div class="navbtn-div">
+  <button
+  id="navbtn"
+  @click="toggleNav"
+  :aria-expanded="navOpen.toString()"
+>
+  <!-- navOpen が true ＆ i===2（中央）なら隠す -->
+  <!-- navOpen が true ＆ i===1／3 なら cross1／cross2 を付与 -->
+  <span
+    v-for="i in 3"
+    :key="i"
+    class="navbtnline"
+    :class="{
+      cross1: navOpen && i === 1,
+      notcross: navOpen && i === 2,
+      cross2: navOpen && i === 3
+    }"
+  ></span>
+</button>
+</div>
+    
+  <nav class="nav" :class="{ open: navOpen }">
       <ul ref="navList" class="nav-list">
-        <li
-          v-for="(link, index) in headerLinks"
-          :key="'header-' + index"
-        >
-          <a :href="link.url">{{ link.text }}</a>
+        <li v-for="(link, index) in headerLinks" :key="'header-' + index">
+          <a :href="link.url">[[ link.text ]]</a>
         </li>
       </ul>
     </nav>
-  </div>
+    
+    </div>
 </header>
