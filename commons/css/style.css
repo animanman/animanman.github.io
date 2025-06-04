@@ -642,6 +642,7 @@ body main .btn-primary {
     &:where(main){
       
       & #content{
+        gap: 15px;
         
         & :is(section,.section){
           & :is(p){
@@ -824,6 +825,10 @@ body main .btn-primary {
   
   &:where(main){
     margin: 75px 0 25px 0;
+    
+      & #content{
+        gap: 10px;
+    }
   }
 }
 }
