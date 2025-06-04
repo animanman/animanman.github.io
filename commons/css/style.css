@@ -514,6 +514,20 @@ body main .btn-primary {
       justify-content: stretch;
       gap:10px;
       
+      & #p-title{
+        gap: 10px;
+        
+        &::before{
+          content: "ー";
+          color:rgba(31, 72, 137, 0.25);
+        }
+        
+        &::after{
+          content: "ー";
+          color:rgba(31, 72, 137, 0.25);
+        }
+      }
+      
       & :where(#content){
         flex: 1;
         flex-direction: column;
@@ -675,6 +689,7 @@ body main .btn-primary {
 @media screen and (max-width: 720px){
   @layer components {
   :where(h0, h1, h2, h3, h4, h5, h6,h7,h8,h9){
+    padding: 0.2rem 0.5rem;
 
     & > {
       
@@ -690,38 +705,47 @@ body main .btn-primary {
 
     &:where(h1){
       font-size: 2rem;
+      margin-bottom: 0.9rem;
     }
 
     &:where(h2){
       font-size: 1.9rem;
+      margin-bottom: 0.8rem;
     }
 
     &:where(h3){
       font-size: 1.8rem;
+      margin-bottom: 0.5rem;
     }
 
     &:where(h4){
       font-size: 1.7rem;
+      margin-bottom: 0.3rem;
     }
 
     &:where(h5){
       font-size: 1.6rem;
+      margin-bottom: 0.25rem;
     }
 
     &:where(h6){
       font-size: 1.5rem;
+      margin-bottom: 0.2rem;
     }
 
     &:where(h7){
       font-size: 1.4rem;
+      margin-bottom: 0.15rem;
     }
 
     &:where(h8){
       font-size: 1.3rem;
+      margin-bottom: 0.1rem;
     }
 
     &:where(h9){
       font-size: 1.2rem;
+      margin-bottom: 0.05rem;
     }
   }
   
