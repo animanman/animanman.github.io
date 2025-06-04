@@ -1,9 +1,7 @@
-<!-- _includes/footer.html -->
 <footer id="footerapp">
   <div id="ft-wpp">
-    <!-- フッターのリンクは <p> タグで包んでいる構造をそのまま活かす -->
     <p v-for="(link, index) in footerLinks" :key="'footer-' + index">
-      <a :href="link.url">{{ link.text }}</a>
+      <a :href="link.url">[[ link.text ]]</a>
     </p>
   </div>
 </footer>
