@@ -518,6 +518,12 @@ body main .btn-primary {
         flex-direction: column;
         justify-content: stretch;
         gap:5px;
+        
+        & .section-groups{
+          display: flex;
+          flex-direction: column;
+          gap:5px;
+        }
       }
     }
 
@@ -643,6 +649,9 @@ body main .btn-primary {
       
       & #content{
         gap: 15px;
+        & .section-groups{
+          gap: 15px;
+        }
         
         & :is(section,.section){
           & :is(p){
@@ -828,6 +837,9 @@ body main .btn-primary {
     
       & #content{
         gap: 10px;
+        & .section-groups {
+          gap: 10px;
+        }
     }
   }
 }
