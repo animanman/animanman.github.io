@@ -1,55 +1,68 @@
+<!-- _layouts/default.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- 文字コード・viewportなど -->
+  <!-- 共通 meta -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <!-- ページタイトルと説明 -->
+  
+  <!-- ページタイトルと説明 (front matter) -->
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description | escape }}">
-  <!-- Open Graph Protocol の設定（ページごとに可変） -->
+  
+  <!-- Open Graph -->
   <meta property="og:title" content="{{ page.title | escape }}">
   <meta property="og:description" content="{{ page.description | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   {% if page.og_image %}
     <meta property="og:image" content="{{ page.og_image }}">
   {% endif %}
-  <!-- 共通CSSの読み込み -->
+
+  <!-- 共通 CSS -->
   <link rel="stylesheet" href="/commons/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <!-- ページ独自のCSSが指定されている場合の読み込み -->
   {% if page.custom_style %}
     <link rel="stylesheet" href="{{ page.custom_style }}">
   {% endif %}
-  <!-- ファビコン -->
+
+  <!-- favicon -->
   <link rel="icon" href="https://animanman.github.io/favicon.ico">
-  <!-- jQuery のCDN読み込み -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <!-- jQuery (必要な場合のみ) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
 </head>
 <body>
   {% include header.html %}
-  <main>
-    <div id="in-wpp">
-      {% if page.title %}
-      <h2 id="p-title">{{ page.title | escape }}</h2>
-      {% endif %}
-      {% if page.description %}
-      <p id="p-desc">{{ page.description | escape }}</p>
-      {% endif %}
-      <div id="content">
-        {{ content }}
+
+  <!-- Vue マウント用のラッパーを用意 -->
+  <div id="app">
+    <main>
+      <div id="in-wpp">
+        {% if page.title %}
+          <h2 id="p-title">{{ page.title | escape }}</h2>
+        {% endif %}
+        {% if page.description %}
+          <p id="p-desc">{{ page.description | escape }}</p>
+        {% endif %}
+        <div id="content">
+          {{ content }}
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
+
   {% include footer.html %}
-  <!-- VueのCDN読み込み -->
+
+  <!-- Vue の CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <!-- 共通JavaScriptファイル -->
+  <!-- 共通スクリプト -->
   <script src="/commons/js/script.js"></script>
-  <!-- ページ独自のJavaScriptが指定されている場合の読み込み -->
   {% if page.custom_script %}
-  <script src="{{ page.custom_script }}"></script>
+    <script src="{{ page.custom_script }}"></script>
   {% endif %}
 </body>
 </html>
+
