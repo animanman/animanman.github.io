@@ -1,4 +1,3 @@
-<!-- after: test/other/index.html -->
 ---
 layout: default
 title: "その他機能など"
@@ -8,25 +7,17 @@ custom_style: "/test/other/style.css"
 custom_script: "/test/other/script.js"
 ---
 
-<!-- メインコンテンツ -->
-<section id="otherapp">
-  <!-- Vue がマウントされる領域 -->
-  <template v-for="(group, gindex) in scriptGroups" :key="gindex">
-    <div class="section">
+<div id="otherapp">
+    <!-- 各グループ（セクション）ごとにループ -->
+    <div v-for="(group, gindex) in scriptGroups" :key="gindex" class="section">
       <h3>[[ group.heading ]]</h3>
-      <div class="script-list">
-        <template v-for="(script, sindex) in group.scripts" :key="sindex">
-          <article class="script-item">
-            <h4 class="script-title">
-              <a :href="script.url" target="_blank" rel="noopener noreferrer">[[ script.title ]]</a>
-            </h4>
-            <div class="script-install">
-              <a :href="script.installurl" target="_blank" rel="noopener noreferrer">導入</a>
-            </div>
-            <p class="script-desc">[[ script.description ]]</p>
-          </article>
-        </template>
+      <!-- セクション内のスクリプト情報をループ -->
+      <div v-for="(script, sindex) in group.scripts" :key="sindex">
+        <h4>
+          <a :href="script.url">[[ script.title ]]</a>
+        </h4>
+        <div><a :href="script.installurl">導入</a></div>
+        <p>[[ script.description ]]</p>
       </div>
     </div>
-  </template>
-</section>
+  </div>
