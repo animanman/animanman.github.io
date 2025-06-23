@@ -7,6 +7,9 @@ https://animanman.github.io/
 [テスト版](https://animanman.github.io/test/)もよろしくね\
 [テスト版のREADME](test/README.md)
 
+[連絡先](https://zawazawa.jp/animamman/topic/1)
+[更新情報](https://zawazawa.jp/animamman/topic/2)
+
 ## 更新履歴
 - **2025/1/3** \
   カテゴリを2025年現在のものにしました。\
