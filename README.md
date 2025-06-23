@@ -1,3 +1,6 @@
+
+[テスト版](https://animanman.github.io/test/)\
+[テスト版のREADME](test/README.md)
 # animanman.github.io
 
 素人の作ったクソ雑魚低性能なあにまん掲示板専用の検索ページです。\
