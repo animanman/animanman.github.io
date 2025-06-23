@@ -4,7 +4,7 @@
 管理人ちゃんとは一切関係ありません。\
 https://animanman.github.io/
 
-[テスト版](https://animanman.github.io/test/)もよろしくね
+[テスト版](https://animanman.github.io/test/)もよろしくね\
 [テスト版のREADME](test/README.md)
 
 ## 更新履歴
